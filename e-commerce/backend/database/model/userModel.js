@@ -23,4 +23,16 @@ const User = sequelize.define('user', {
   timestamps: false
 })
 
-module.exports = {User}
+const getOneUser = (email) => {
+  return User.findOne({where: {emailPhone: email}})
+}
+
+const addUser = (data) => {
+  return User.create(data)
+}
+
+const editUser = (id, data) => {
+  return User.update(data, {where: {iduser: id}})
+}
+
+module.exports = {User, getOneUser, addUser, editUser}
