@@ -39,4 +39,4 @@ Block.belongsTo(User);
 
 Authorization.belongsTo(User)
 
-sequelize.sync({alter: true})
+sequelize.sync()
