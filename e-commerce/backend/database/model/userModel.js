@@ -35,4 +35,8 @@ const editUser = (id, data) => {
   return User.update(data, {where: {iduser: id}})
 }
 
-module.exports = {User, getOneUser, addUser, editUser}
+const deleteUser = (id) => {
+  return User.destroy({where: {iduser: id}})
+}
+
+module.exports = {User, getOneUser, addUser, editUser, deleteUser}
