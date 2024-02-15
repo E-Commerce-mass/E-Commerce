@@ -35,4 +35,16 @@ const editUser = (id, data) => {
   return User.update(data, {where: {iduser: id}})
 }
 
-module.exports = {User, getOneUser, addUser, editUser}
+const getAll = () => {
+  return User.findAll()
+}
+
+const findClients = () => {
+return User.findAll({
+  where: {
+    role: "client"
+  }
+});
+}
+
+module.exports = {User, getOneUser, addUser, editUser, getAll, findClients}
