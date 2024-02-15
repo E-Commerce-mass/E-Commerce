@@ -63,19 +63,6 @@ props.prodd.map((e)=>{
             </CardActions>
           </Card>
           </div>
-        //     <Card className='div1' style={ {"width": "300px",
-        //       "height": "100px",
-        //       "border": "1px solid blue","display":"flexbox"}}>
-        //  <div className='div2'>{e.images[0] && <img  src={ e.images[0].image} style={{"width":"150px","height":"70px"}}/>} </div>
-        //  <div> {e.productName} </div>
-        //  <div> {e.price} </div>  
-        //  <div> {e.color} </div>  
-        //  <div> {e.size} </div>
-        //  <div> {e.quantity} </div>
-        //  <div> {e.promotion} </div>
-        //  <div> {e.description} </div>
-        //  <div> {e.new} </div>
-        //     </Card>
           )
         })}
       <div style={{marginTop:"-10px",marginLeft:"600px"}}>

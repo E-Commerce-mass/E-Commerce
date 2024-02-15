@@ -1,18 +1,21 @@
 import React, { useContext, useState } from 'react'
 import { ThemeContext } from 'react'
 import Card from '@mui/material/Card';
-
+import Newarrivals from './briniHome/Newarrivals.jsx';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box, ThemeProvider } from '@mui/system';
-import Newarrival from './briniHome/Newarrivals.jsx';
+import { useNavigate } from "react-router-dom";
 import FlashSale from './briniHome/FlashSale.jsx';
+import { Navigate } from 'react-router-dom';
 
 const HomePage = (props) => {
-console.log("hi",props.prod);
+  
+  const navigate = useNavigate();
+
   return (
   <div>
    
@@ -26,22 +29,22 @@ console.log("hi",props.prod);
      
       </div>
       <div style={{marginTop:"50px",justifyContent:"center",marginLeft:"330px"}} >
-        <Button variant="contained" size="medium">
+        <Button variant="contained" size="medium" onClick={()=>{navigate("/womanfashion")}}>
           Woman Fashion
         </Button>
-        <Button variant="contained" size="medium">
+        <Button variant="contained" size="medium" onClick={()=>{navigate("/manfashion")}}>
           Man Fashion
         </Button>
-        <Button variant="contained" size="medium">
+        <Button variant="contained" size="medium"onClick={()=>{navigate("/medecine")}}>
           Medecine
         </Button>
-        <Button variant="contained" size="medium">
+        <Button variant="contained" size="medium"onClick={()=>{navigate("/sports")}}>
          Sports
         </Button>
-        <Button variant="contained" size="medium">
+        <Button variant="contained" size="medium"onClick={()=>{navigate("/health&beauty")}}>
           HEALTH & Beauty
         </Button>
-        <Button variant="contained" size="medium">
+        <Button variant="contained" size="medium"onClick={()=>{navigate("/gaming")}}>
           Gaming
         </Button>
       </div>
@@ -80,23 +83,11 @@ console.log("hi",props.prod);
       </CardContent>
       <CardActions>
         
-        <Button size="small">Learn More</Button>
+        <Button size="small" onClick={()=>{navigate("/productdescription")}}>Learn More</Button>
       </CardActions>
     </Card>
     </div>
-  //     <Card className='div1' style={ {"width": "300px",
-  //       "height": "100px",
-  //       "border": "1px solid blue","display":"flexbox"}}>
-  //  <div className='div2'>{e.images[0] && <img  src={ e.images[0].image} style={{"width":"150px","height":"70px"}}/>} </div>
-  //  <div> {e.productName} </div>
-  //  <div> {e.price} </div>  
-  //  <div> {e.color} </div>  
-  //  <div> {e.size} </div>
-  //  <div> {e.quantity} </div>
-  //  <div> {e.promotion} </div>
-  //  <div> {e.description} </div>
-  //  <div> {e.new} </div>
-  //     </Card>
+  
     )
   })}
 <div style={{marginTop:"-10px",marginLeft:"600px"}}>
@@ -104,9 +95,8 @@ console.log("hi",props.prod);
       See All Products
     </Button>
     </div>
-    
-    < FlashSale prodd={props.prod}/> 
-   
+    < FlashSale prodd={props.prod}/>
+    <Newarrivals prodd={props.prod}/>
   </div>
   )
 }

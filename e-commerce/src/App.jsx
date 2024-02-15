@@ -3,22 +3,14 @@ import { BrowserRouter , Routes, Route } from "react-router-dom";
 import HomePage from './components/HomePage.jsx'
 import axios from "axios"
 import FlashSale from './components/briniHome/FlashSale.jsx';
-import Newarrivals from './components/briniHome/Newarrivals.jsx';
+import Womanfashion from './components/briniHome/womanfashion.jsx';
 import { FaSearch } from "react-icons/fa";
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import Newarrival from './components/briniHome/Newarrivals.jsx';
+import Manfashion from './components/briniHome/manfashion.jsx';
+import Sports from './components/briniHome/sports.jsx';
+import Gaming from './components/briniHome/gaming.jsx';
+import Healthbeauty from './components/briniHome/health&beauty.jsx';
+import Medecine from './components/briniHome/medecine.jsx';
+
 
 const ThemeContext = createContext();
 
@@ -86,7 +78,12 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path='/home' element={<HomePage prod={dataproduct} />} ></Route>
-     
+        <Route path="/womanfashion" Component={Womanfashion} />
+        <Route path="/manfashion" Component={Manfashion} />
+        <Route path="/health&beauty" Component={Healthbeauty} />
+        <Route path="/gaming" Component={Gaming} />
+        <Route path="/sports" Component={Sports} />
+        <Route path="/medecine" Component={Medecine} />
       </Routes>
     </BrowserRouter>
       <div>
