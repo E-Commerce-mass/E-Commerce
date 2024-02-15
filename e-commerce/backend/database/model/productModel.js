@@ -19,5 +19,18 @@ const Products = sequelize.define('products', {
   tableName: 'products',
   timestamps: false
 })
+const getAllProduct=(id)=>{
+  return Products.findAll({where: {userIduser:id}})
+}
+const addproduct=(data)=>{
+  return Products.create(data)
+}
+const editproduct=(data,id)=>{
+  return Products.update(data,{where:{idproducts:id}})
+}
+const deleteProduct=(id)=>{
+  return Products.destroy({where :{idproducts:id}})
+}
 
-module.exports = {Products}
+module.exports = {Products,getAllProduct,addproduct,editproduct,deleteProduct
+}
