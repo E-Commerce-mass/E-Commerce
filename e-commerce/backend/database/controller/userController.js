@@ -10,14 +10,16 @@ const signUp = async (req, res) => {
     const {firstName, lastName, emailPhone, password, role} = req.body
     try{
         const pswHashed = await bcrypt.hash(password, 10)
-        const result = addUser({
+        addUser({
             firstName: firstName,
             lastName: lastName,
             emailPhone: emailPhone,
             password: pswHashed,
             role: role
         })
-        res.status(201).json(result)
+        .then((result)=>{
+            res.status(201).json(result)
+        })
     }
     catch(err){
         res.status(500).json(err)
@@ -33,8 +35,8 @@ const signIn = async (req, res) => {
                 try{
                     const isMatch = await bcrypt.compare(password, result.password)
                     if(isMatch){
-                        const token = jwt.sign({emailPhone: emailPhone}, secretKey)
-                        res.status(200).json({msg: 'user found', token})
+                        const token = jwt.sign({emailPhone: emailPhone}, secretKey, {expiresIn: "2h"})
+                        res.status(200).json({msg: 'user found' ,iduser: result.iduser, role: result.role,token})
                     }
                     else{
                         res.status(401).json("wrong email or password")
@@ -89,4 +91,15 @@ const destroyUser = async (req, res) => {
     }
 }
 
-module.exports = {signUp, signIn, updateUser, destroyUser}
+const fetchOneUser = (req, res) => {
+    const {email} = req.body
+    getOneUser(email)
+    .then((result)=>{
+        res.status(200).json(result)
+    })
+    .catch((err)=>{
+        res.status(500).send(err)
+    })
+}
+
+module.exports = {signUp, signIn, updateUser, destroyUser, fetchOneUser}
