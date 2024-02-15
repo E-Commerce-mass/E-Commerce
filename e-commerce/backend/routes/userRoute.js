@@ -13,4 +13,6 @@ router.get('/getallusers',controller.getusers)
 
 router.get('/getclients',controller.getClients)
 
+router.get('/getsellers',controller.getSellers)
+
 module.exports = router

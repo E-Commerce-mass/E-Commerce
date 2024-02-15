@@ -46,5 +46,12 @@ return User.findAll({
   }
 });
 }
+const findSellers = () => {
+  return User.findAll({
+    where: {
+      role: "seller"
+    }
+  });
+  }
 
-module.exports = {User, getOneUser, addUser, editUser, getAll, findClients}
+module.exports = {User, getOneUser, addUser, editUser, getAll, findClients, findSellers}

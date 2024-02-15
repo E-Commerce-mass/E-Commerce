@@ -2,7 +2,7 @@ require("dotenv").config()
 const jwt=require('jsonwebtoken')
 const bcrypt=require('bcrypt')
 
-const {getOneUser, addUser, editUser, deleteUser,getAll,findClients} = require('../model/userModel')
+const {getOneUser, addUser, editUser, deleteUser,getAll,findClients,findSellers} = require('../model/userModel')
 const secretKey = 'mass'
 console.log(secretKey)
 
@@ -109,4 +109,15 @@ console.log(err);
     }
 }
 
-module.exports = {signUp, signIn, updateUser, destroyUser, getusers, getClients}
+const getSellers = async (req,res) =>{
+
+    const x= await findSellers()
+    try{
+        res.send(x)
+    }
+    catch(err){
+console.log(err);
+    }
+}
+
+module.exports = {signUp, signIn, updateUser, destroyUser, getusers, getClients, getSellers}
