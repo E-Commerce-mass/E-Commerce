@@ -1,6 +1,9 @@
 const express = require("express")
 const cors = require('cors')
 require('../database/model/SyncModels')
+const userRoute = require('../routes/userRoute')
+const authorRoute = require('../routes/authorRoute')
+
 const PORT = 8080
 const app = express()
 const productrouter=require("../routes/productroute")
@@ -11,6 +14,9 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.static(__dirname + '../../index.html'))
 app.use("/",productrouter)
 app.use("/",imagerouter)
+
+app.use('/user', userRoute)
+app.use('/token', authorRoute)
 
 app.listen(PORT, ()=>{
     console.log(`Server listening at http://localhost:${PORT}`)
