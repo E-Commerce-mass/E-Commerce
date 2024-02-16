@@ -8,13 +8,6 @@ const AdminDashboard = () => {
     const [view, setView] = useState("charts");
     const [isHovered, setIsHovered] = useState(false);
 
-    const handleMouseEnter = () => {
-        setIsHovered(true);
-    };
-
-    const handleMouseLeave = () => {
-        setIsHovered(false);
-    };
 
     const chartsTotab = () => {
         if (view === "charts") return (<Charts />);
@@ -24,21 +17,20 @@ const AdminDashboard = () => {
     };
 
     return (
-        <>
-            <AppBar position="sticky">
-                <Toolbar>
-                    <Typography variant="h6" noWrap>
-                    </Typography>
+        <div>
+            <AppBar  sx={{zIndex:-1,justifyContent:"center",backgroundColor:"white"}}>
+                <Toolbar >
+                    <div style={{fontSize:"50px",color:"white"}}>Admin Panel</div>
                 </Toolbar>
             </AppBar>
-            <Drawer variant="permanent" anchor="left">
-                <Toolbar />
-                <List sx={{border:"1px", position:"relative",justifyContent:"center",width:"200px"  }}>
+            <Drawer variant="permanent" anchor='left' sx={{ "& .MuiDrawer-paper": { width: 240,zIndex:"1",alignItems:"center",justifyItems:"center" } }}>
+                
+                <List sx={{width:"200px",marginTop:"100px"}}>
                     <ListItem button onClick={() => { setView("charts") }}>
                         <ListItemText primary="Dashboard" />
                     </ListItem>
 
-                    <ListItem button onClick={() => { setView("dash") }} onMouseEnter={handleMouseEnter}>
+                    <ListItem button onClick={() => { setView("dash") }} onMouseEnter={()=>{setIsHovered(true)}}>
                         <Tooltip title="Users">
                             <div>
                                 <ListItemText primary="Users" />
@@ -46,7 +38,7 @@ const AdminDashboard = () => {
                         </Tooltip>
                     </ListItem>
                         {isHovered && (
-                            <List style={{ paddingLeft: '20px' }} onMouseLeave={handleMouseLeave}>
+                            <List style={{ paddingLeft: '20px' }} onMouseLeave={()=>{setIsHovered(false)}}>
                                 <ListItem button>
                                     <ListItemText primary="Clients" onClick={()=>{setView("clientsDash")}}/>
                                 </ListItem>
@@ -57,15 +49,20 @@ const AdminDashboard = () => {
                         )}
 
                     <ListItem button>
-                        <ListItemText primary="Pages" />
+                        <ListItemText primary="Categories" />
                     </ListItem>
+                    
                 </List>
             </Drawer>
-            <main>
-                <Toolbar />
+     
+         
+                
+               
                 {chartsTotab()}
-            </main>
-        </>
+         
+  
+              
+        </div>
     );
 };
 

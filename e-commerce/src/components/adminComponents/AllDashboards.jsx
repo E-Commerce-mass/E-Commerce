@@ -13,8 +13,7 @@ const columns = [
     },
     {
       field: 'emailPhone',
-      headerName: 'Email',
-      description: 'This column has a value getter and is not sortable.',
+      headerName: 'Email/Phone',
       sortable: false,
       width: 1000,
     }
@@ -45,10 +44,10 @@ return (
         columns={columns}
         initialState={{
           pagination: {
-            paginationModel: { page: 0, pageSize: 10 },
+            paginationModel: { page: 0, pageSize: 5 },
           },
         }}
-        pageSizeOptions={[5, 10]}
+        pageSizeOptions={[1]}
       />
     </div>
 
