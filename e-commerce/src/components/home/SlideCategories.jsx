@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
-import Carousel from 'react-bootstrap/Carousel'
+import Carousel from 'react-bootstrap/Carousel';
+import Container from '@mui/material/Container';
 
 const SlideCategories = () => {
   return (
-    <Box sx={{display:'flex', gap:'120px'}}>
+    <Container sx={{display:'flex', justifySelf:'auto'}}>
       <Box
         sx={{
           width: "100%",
@@ -73,7 +74,7 @@ const SlideCategories = () => {
             </Carousel>
         </div>
       </Box>
-    </Box>
+    </Container>
   );
 };
 
