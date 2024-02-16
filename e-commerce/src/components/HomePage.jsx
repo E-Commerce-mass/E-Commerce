@@ -10,18 +10,22 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box, ThemeProvider } from '@mui/system';
 import { useNavigate } from "react-router-dom";
-import FlashSale from './briniHomePage/FlashSale.jsx';
-import { Navigate } from 'react-router-dom';
+import FlashSale from './briniHome/FlashSale.jsx';
+import ProductContext from './UseContext.js';
+import SlideCategories from './home/SlideCategories.jsx';
+import TodayS from './home/TodayS.jsx';
 
 
-const HomePage = (props) => {
- 
-  const navigate = useNavigate();
+const HomePage = () => {
+  const productData = useContext(ProductContext)
+  const navigate = useNavigate()
 
   return (
-  <div>
-   
-    <div style={{display:"grid",placeItems:"center"}}>
+  <div style={{paddingLeft:"120px", paddingRight:'120px', paddingTop:"30px"}}>
+      <SlideCategories/>
+      <TodayS/>
+
+    {/* <div style={{display:"grid",placeItems:"center"}}>
     <img src="https://browntape.com/wp-content/uploads/2016/10/online-store.png"height={"300px"}width={"470px"} display={"block"}  />
     </div>
     
@@ -54,7 +58,7 @@ const HomePage = (props) => {
       <h1 style={{display:"grid",textAlign:"center",color:"rgb(247, 93, 93)",backgroundColor:"white",marginBlock:"20px"}}>--- Explore Our Products ---</h1>
       </div>
     </Box> </div>
-  {props.prod.map((e)=>{
+  {productData.map((e)=>{
   
     return (
    
@@ -97,8 +101,8 @@ const HomePage = (props) => {
       See All Products
     </Button>
     </div>
-    < FlashSale prodd={props.prod}/>
-    <Newarrivals prodd={props.prod}/>
+    < FlashSale prodd={productData}/>
+    <Newarrivals prodd={productData}/> */}
   </div>
   )
 }

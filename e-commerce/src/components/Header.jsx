@@ -18,7 +18,7 @@ import { Search } from '@mui/icons-material';
 
 const Header = () => {
   return (
-    <AppBar position='static' sx={{bgcolor: 'transparent', boxShadow:'none'}}>
+    <AppBar position='static' sx={{bgcolor: 'transparent', boxShadow:'none', paddingTop:'20px'}}>
         <Container maxWidth='xl'>
             <Toolbar disableGutters>
                 <Typography
