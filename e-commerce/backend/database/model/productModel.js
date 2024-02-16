@@ -1,5 +1,7 @@
 const { DataTypes, Sequelize } = require('sequelize');
 const sequelize = require('../index');
+const { Image } = require('./imagesModel');
+const {Categories}=require("./categoriesModel")
 
 const Products = sequelize.define('products', {
   idproducts: {
@@ -19,5 +21,9 @@ const Products = sequelize.define('products', {
   tableName: 'products',
   timestamps: false
 })
+const getAllproducts = () => {
+  return Products.findAll({include: [{model: Image, attributes: ["image"]},{model:Categories,attributes:["categoryname"]}]})
 
-module.exports = {Products}
+}
+
+module.exports = {Products,getAllproducts}
