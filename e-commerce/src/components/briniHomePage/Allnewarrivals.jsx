@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Card from '@mui/material/Card';
-
+import { useNavigate } from "react-router-dom";
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -8,15 +8,18 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box, ThemeProvider } from '@mui/system';
 
-const FlashSale=(props)=>{
+const Allnewarrivals=(props)=>{
+    const navigate = useNavigate()
+
 const [filtered,setfiltered]=useState([])
 const arr = []
     const filterr =(()=>{
         
-props.prodd.map((e)=>{
+   props.prodd.map((e)=>{
     
-    const parsed = JSON.parse(e.promotion)
-    if(parsed !==""){
+    const parsed = JSON.parse(e.new)
+    
+    if(parsed ===true){
        arr.push(e)
     }
 })
@@ -25,7 +28,7 @@ props.prodd.map((e)=>{
    return (
     
     <div>
-         <h1 style={{display:"grid",textAlign:"center",color:"rgb(247, 93, 93)",backgroundColor:"white",marginBlock:"20px"}}>--- Flash Sale ---</h1>
+         <h1 style={{display:"grid",textAlign:"center",color:"rgb(247, 93, 93)",backgroundColor:"white",marginBlock:"20px"}}>--- New Arrivals ---</h1>
        
         {arr.map((e)=>{
 
@@ -66,9 +69,7 @@ props.prodd.map((e)=>{
           )
         })}
       <div style={{marginTop:"-10px",marginLeft:"600px"}}>
-      <Button variant="contained" disableElevation >
-            See All Products
-          </Button>
+     
           </div>
           
 
@@ -78,4 +79,4 @@ props.prodd.map((e)=>{
    
 
 
-export default FlashSale;
+export default Allnewarrivals;

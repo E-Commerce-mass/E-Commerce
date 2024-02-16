@@ -17,7 +17,8 @@
     line-height:1.6;
     font-size:14px;
     margin-bottom:0;
-    color: rgb(106, 105, 105);
+    color: rgb(0, 0, 0);
+    color: #f5f1f1;
   }
   
   .footer-dark ul a {
