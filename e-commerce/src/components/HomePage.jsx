@@ -1,7 +1,8 @@
-import React, { useContext, useState , useEffect} from 'react'
+import React, { useContext, useState ,useEffect} from 'react'
 import { ThemeContext } from 'react'
 import Card from '@mui/material/Card';
-import Newarrivals from './briniHome/Newarrivals.jsx';
+import axios from 'axios';
+import Newarrivals from './briniHomePage/Newarrivals.jsx';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -96,7 +97,7 @@ const HomePage = () => {
     )
   })}
 <div style={{marginTop:"-10px",marginLeft:"600px"}}>
-<Button variant="contained" disableElevation >
+<Button variant="contained" disableElevation onClick={()=>{navigate("/allproduct")}}>
       See All Products
     </Button>
     </div>

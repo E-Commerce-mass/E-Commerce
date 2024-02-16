@@ -1,9 +1,6 @@
 const express = require("express")
 const cors = require('cors')
 require('../database/model/SyncModels')
-const userRoute = require('../routes/userRoute')
-const authorRoute = require('../routes/authorRoute')
-
 const PORT = 8080
 const app = express()
 const productrouter=require("../routes/productroute")
