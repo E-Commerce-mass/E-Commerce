@@ -10,8 +10,8 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static(__dirname + '../../index.html'))
 
-app.use('/user', userRoute)
-app.use('/token', authorRoute)
+// app.use('/user', userRoute)
+// app.use('/token', authorRoute)
 app.use("/product",productrouter)
 app.use("/image",imagerouter)
 
