@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize')
+const { DataTypes, where } = require('sequelize')
 const sequelize = require('../index')
 
 const Categories = sequelize.define('categories', {
@@ -13,4 +13,17 @@ const Categories = sequelize.define('categories', {
   timestamps: false
 })
 
-module.exports = {Categories}
+const getAllcategories=()=>{
+  return Categories.findAll()
+}
+
+const addCategorie=(add)=>{
+  return Categories.create(add)
+}
+
+const delCategorie=(id)=>{
+  return Categories.destroy({where:{idcategories:id}})
+} 
+
+
+module.exports = {Categories, getAllcategories , addCategorie, delCategorie}

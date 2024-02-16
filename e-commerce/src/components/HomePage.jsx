@@ -10,7 +10,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box, ThemeProvider } from '@mui/system';
 import { useNavigate } from "react-router-dom";
-
 import ProductContext from './UseContext.js';
 import SlideCategories from './home/SlideCategories.jsx';
 import TodayS from './home/TodayS.jsx';

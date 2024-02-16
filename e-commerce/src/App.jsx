@@ -1,6 +1,7 @@
 import react, { useEffect, useState, createContext, useContext } from 'react'
 import { BrowserRouter , Routes, Route } from "react-router-dom";
 import HomePage from './components/HomePage.jsx'
+import AdminDashboard from "./components/adminComponents/AdminDashboard.jsx"
 import axios from "axios"
 import Womanfashion from "./components/briniHomePage/Womanfashion.jsx"
 import Header from './components/Header.jsx';
@@ -39,7 +40,7 @@ function App() {
     <BrowserRouter>
     <ProductContext.Provider value={dataproduct}>
       <Routes>
-      <Route path='/home' element={<HomePage prod={dataproduct} />} ></Route>
+        <Route path='/admin' Component={AdminDashboard}></Route>
         <Route path="/womanfashion" element={<Womanfashion prodd={dataproduct}/>} ></Route>
         <Route path="/manfashion" element={<Manfashion prodd={dataproduct}/>} ></Route>
         <Route path="/health&beauty" element={<Healthbeauty prodd={dataproduct}/>} ></Route>
@@ -47,7 +48,6 @@ function App() {
         <Route path="/sports" element={<Sports prodd={dataproduct}/>} ></Route>
         <Route path="/medecine" element={<Medecine prodd={dataproduct}/>} ></Route>
         <Route path="/allproduct" element={<Allproducts prodd={dataproduct}/>}> </Route>
-        <Route path="/flashsale"  element={<AllflashSale prodd={dataproduct}/>}></Route>
         <Route path="/newarrivals"  element={<Allnewarrivals prodd={dataproduct}/>}></Route>
         <Route path="/contact" Component={Contact}  ></Route>
         <Route path="/aboutus" Component={Aboutus}  ></Route>  
@@ -58,13 +58,7 @@ function App() {
       </Routes>
     </ProductContext.Provider>
     </BrowserRouter>
-      <div>
-     
-    </div>
-  
- 
-   
-</>
+    </>
   )
 }
 export default App;
