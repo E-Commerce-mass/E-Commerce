@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import ProductContext from './UseContext.js';
 import SlideCategories from './home/SlideCategories.jsx';
 import TodayS from './home/TodayS.jsx';
+import BrowseBy from './home/BrowseBy.jsx';
 
 
 const HomePage = () => {
@@ -23,6 +24,7 @@ const HomePage = () => {
   <div style={{paddingLeft:"120px", paddingRight:'120px', paddingTop:"30px"}}>
       <SlideCategories/>
       <TodayS/>
+      <BrowseBy/>
 
     {/* <div style={{display:"grid",placeItems:"center"}}>
     <img src="https://browntape.com/wp-content/uploads/2016/10/online-store.png"height={"300px"}width={"470px"} display={"block"}  />

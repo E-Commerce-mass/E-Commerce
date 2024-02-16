@@ -25,7 +25,7 @@ const Header = () => {
                     variant="h6"
                     noWrap
                     component='a'
-                    href="/"
+                    href="/home"
                     sx={{
                       ml: 15,
                       display: { xs: 'none', md: 'flex' },
@@ -43,7 +43,7 @@ const Header = () => {
                         variant="h6"
                         noWrap
                         component='a'
-                        href="/"
+                        href="/home"
                         sx={{
                         
                         display: { xs: 'none', md: 'flex'},
@@ -61,7 +61,7 @@ const Header = () => {
                         variant="h6"
                         noWrap
                         component='a'
-                        href="/"
+                        href="/contact"
                         sx={{
                         ml: '50px',
                         display: { xs: 'none', md: 'flex' },
@@ -79,7 +79,7 @@ const Header = () => {
                         variant="h6"
                         noWrap
                         component='a'
-                        href="/"
+                        href="/aboutus"
                         sx={{
                         ml: '50px',
                         display: { xs: 'none', md: 'flex' },
@@ -112,9 +112,6 @@ const Header = () => {
                     >Sign Up
                     </Typography>
                 </Box>
-                <Search>
-                    
-                </Search>
             </Toolbar>
 
         </Container>

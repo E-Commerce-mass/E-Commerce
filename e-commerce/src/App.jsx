@@ -27,6 +27,7 @@ function App() {
     axios.get("http://localhost:8080/product/getall")
     .then((res) => {
       setDataproduct(res.data)
+      console.log(res.data,'check');
     })
     .catch((err) => {
       console.error(err)

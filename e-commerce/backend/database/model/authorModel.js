@@ -8,7 +8,7 @@ const Authorization = sequelize.define('authorization', {
     autoIncrement: true
   },
   token: {
-    type: DataTypes.STRING(45),
+    type: DataTypes.STRING,
     allowNull: false
   }
 }, {
@@ -16,4 +16,16 @@ const Authorization = sequelize.define('authorization', {
   timestamps: false
 })
 
-module.exports = {Authorization}
+const addToken = (token) => {
+  return Authorization.create(token)
+}
+
+const getToken = (id) => {
+  return Authorization.findOne({where: {userIduser: id}})
+}
+
+const deleteToken = (id) => {
+  return Authorization.destroy({where: {userIduser: id}})
+}
+
+module.exports = {Authorization, addToken, getToken, deleteToken}

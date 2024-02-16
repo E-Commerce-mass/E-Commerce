@@ -37,9 +37,9 @@ const SignIn = () => {
       await axios.post(`http://localhost:8080/token/add/${id}`, data)
       .then(()=>{
         if(role === 'client'){
-          console.log(role);
+          navigate('/home')
         }
-        else console.log(role);
+        else navigate('/seller')
       })
       .catch((err)=>{
         console.log(err);

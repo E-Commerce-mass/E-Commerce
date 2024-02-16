@@ -10,7 +10,7 @@ const AdminDashboard = () => {
 
 
     const chartsTotab = () => {
-        if (view === "charts") return (<Charts />);
+        if (view === "charts") return ('hiii');
         else if (view === "dash") return (<Dashboards />);
         else if(view==="clientsDash") return (<ClientDashboard />)
         else if (view==="sellersdash") return (<SellersDashboard />)

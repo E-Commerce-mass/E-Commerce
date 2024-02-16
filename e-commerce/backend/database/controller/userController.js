@@ -34,7 +34,7 @@ const signIn = async (req, res) => {
                     const isMatch = await bcrypt.compare(password, result.password)
                     if(isMatch){
                         const token = jwt.sign({emailPhone: emailPhone}, secretKey)
-                        res.status(200).json({msg: 'user found', token})
+                        res.status(200).json({msg: 'user found' ,iduser: result.iduser, role: result.role,token})
                     }
                     else{
                         res.status(401).json("wrong email or password")
