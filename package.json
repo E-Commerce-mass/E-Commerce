@@ -1,9 +1,0 @@
-{
-  "devDependencies": {
-    "parcel": "^2.11.0"
-  },
-  "dependencies": {
-    "@mui/x-data-grid": "^6.19.4",
-    "react-pro-sidebar": "^1.1.0"
-  }
-}
