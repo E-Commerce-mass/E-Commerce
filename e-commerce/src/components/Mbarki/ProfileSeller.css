@@ -5,15 +5,22 @@
 .ListProfile{
     padding-top: 7%;
 }
-.listItemSeller{
+.listItemSeller {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 40vh;
     width: 35vh;
-    background-color: #edebeb;
-    
+    background-color:transparent;
+    transition: background-color 0.3s; 
+}
+.salah{
+    display:flex;
+    gap:20px;
+}
+.listItemSeller:hover {
+    background-color: #f3eeee; 
 }
 /* .carproductuselled{
     display: flex;

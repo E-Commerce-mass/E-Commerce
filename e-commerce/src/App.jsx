@@ -1,4 +1,5 @@
-import react from 'react'
+import react, {  } from 'react'
+import axios from 'axios'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from './components/HomePage.jsx'
 import ProfileSeller from './components/Mbarki/ProifleSeller.jsx'
@@ -7,7 +8,8 @@ import AddProductSeller from './components/Mbarki/AddProductSeller.jsx';
 import Edit from './components/Mbarki/EditProduct.jsx'
 
 function App() {
-
+  
+  
   return (
     <BrowserRouter>
       <Routes>

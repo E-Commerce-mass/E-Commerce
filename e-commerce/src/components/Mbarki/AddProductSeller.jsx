@@ -1,16 +1,46 @@
-import React from 'react'
+import React, { useEffect,useState,useRef } from 'react'
 import { Typography } from '@mui/material'
 import { Stack,TextField,Button} from '@mui/material'
 import './AddProductSeller.css'
+import { Link, useNavigate } from 'react-router-dom';  // Import Link and useNavigate
 
 const AddProductSeller = () => {
+  const navigate = useNavigate();  // Get the navigate function from React Router
+
+  const cloudinaryRef = useRef()
+  const widgetRef = useRef()
+  const [file, setFile] = useState("")
+  const [view, setView] = useState(false)
+  useEffect(() => {
+    cloudinaryRef.current = window.cloudinary
+    widgetRef.current = cloudinaryRef.current.createUploadWidget({
+      cloudName: "dtdnjwyoc",
+      uploadPreset: "h5hdwysw"
+    }, (error, result) => {
+      if(error){
+        console.log(error);
+      }
+      else{
+        if(!!result.info.secure_url){
+          setView(true)
+          setFile(result.info.secure_url)
+          console.log(result.info.secure_url);
+        }
+      }
+    })
+  }, []) 
+  const goToProfile = () => {
+    navigate('/ProfileSeller')
+  };
   return (
     <div>
          <Stack spacing={30} direction='row'>
         <Stack className='sellermanagin' spacing={1} direction='column'  >
         <Typography variant='h6' >manage my account</Typography>
        <Stack marginBottom='100px' spacing={0.5} direction='column'> 
-        <Typography   variant='subtitle2' color='#f44336'>My Profile</Typography>
+        <Link to="/ProfileSeller">
+        <Typography   variant='subtitle2' color='#f44336'  >My Profile</Typography>
+        </Link>
         <Typography variant='subtitle2' color='#546e7a'>Address Book</Typography>
         <Typography variant='subtitle2'color='#546e7a' >My Payment Options</Typography>
         </Stack>
@@ -24,10 +54,12 @@ const AddProductSeller = () => {
         
         
         <Stack className='editprogileSeller' spacing={2} direction='column'>
-        <Typography variant='subtitle2' color='#f44336'>Edit your profile</Typography>
+        <Typography variant='subtitle2' color='#f44336'>Add Product</Typography>
         <Stack spacing={2} direction='row'>
         <TextField label='name Product' size='standard'>name Product</TextField>
-        <TextField label='product Image' size='standard'>product Image</TextField>
+        <button  onClick={()=> widgetRef.current.open()}>photos</button>
+        { view ? <img src={file} alt="file" width={100} height={100}/> : <></>}
+
         </Stack>
         <Stack spacing={2} direction='row'>
         <TextField label='Price' size='standard'>price</TextField>

@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
+
 import { Typography } from '@mui/material'
 import { Stack,TextField,Button} from '@mui/material'
-
+import { Link, useNavigate } from 'react-router-dom';  // Import Link and useNavigate
 import './Add.css';
+import axios from 'axios';
 
 const Add = () => {
+  const navigate = useNavigate();  // Get the navigate function from React Router
+
+  const Addpro=()=>{
+    axios.post('http://localhost:8080/product/addpro').then((result)=>{
+    console.log(result);
+    }).catch((err)=>{
+      console.log(err);
+    })
+  }
+  const goToProfile = () => {
+    navigate('/ProfileSeller')
+  };
 
   return (
     <>
@@ -13,7 +27,9 @@ const Add = () => {
         <Stack className='sellermanagin' spacing={1} direction='column'  >
         <Typography variant='h6' >manage my account</Typography>
        <Stack marginBottom='100px' spacing={0.5} direction='column'> 
-        <Typography   variant='subtitle2' color='#f44336'>My Profile</Typography>
+       <Link to="/ProfileSeller">
+              <Typography variant='subtitle2' color='#f44336' onClick={goToProfile}>My Profile</Typography>
+            </Link>        
         <Typography variant='subtitle2' color='#546e7a'>Address Book</Typography>
         <Typography variant='subtitle2'color='#546e7a' >My Payment Options</Typography>
         </Stack>
@@ -43,7 +59,7 @@ const Add = () => {
         </Stack> 
         <Stack spacing={0.5} direction='row'  alignItems='flex-end' textAlign='right' style={{marginLeft: 'auto'}}>
         <Typography variant='subtitle2' color='#212121' >Cancel</Typography>
-        <Button variant='contained' color='error'>Save changes</Button>
+        <Button variant='contained' color='error'onClick={()=>{Addpro()}}>Save changes</Button>
         </Stack>
         </Stack>
        </Stack>
