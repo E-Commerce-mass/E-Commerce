@@ -29,7 +29,7 @@ const TodayS = () => {
 
   return (
     <Container sx={{ marginTop: "100px" }}>
-      <Box sx={{display:'flex', justifyContent:'space-between'}}>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box>
           <div
             style={{
@@ -95,136 +95,138 @@ const TodayS = () => {
         }}
       >
         {productData.map((e) => {
-          return (
-            <Box
-              display={"inline-flex"}
-              sx={{ marginRight: "30px" }}
-              ref={sliderRef}
-            >
-              <Card
-                sx={{
-                  width: 250,
-                  marginTop: "30px",
-                  backgroundColor: "rgba(245, 245, 245, 1)",
-                }}
+          if (e.promotion) {
+            return (
+              <Box
+                display={"inline-flex"}
+                sx={{ marginRight: "30px" }}
+                ref={sliderRef}
               >
-                <div>
-                  <Typography
-                    sx={{
-                      height: "25px",
-                      width: "55px",
-                      textAlign: "center",
-                      fontFamily: "cursive",
-                      borderRadius: "4px",
-                      color: "wheat",
-                      backgroundColor: "rgba(219, 68, 68, 1)",
-                    }}
-                  >
-                    -{e.promotion}%
-                  </Typography>
-                  <IconButton
-                    aria-label="bookmark Bahamas Islands"
-                    variant="plain"
-                    color="neutral"
-                    size="md"
-                    sx={{
-                      position: "absolute",
-                      top: "0.3rem",
-                      right: "0.5rem",
-                      backgroundColor: "white",
-                      borderRadius: "20px",
-                      zIndex: 1,
-                    }}
-                  >
-                    <FavoriteBorderIcon />
-                  </IconButton>
-                  <IconButton
-                    aria-label="bookmark Bahamas Islands"
-                    variant="plain"
-                    color="neutral"
-                    size="md"
-                    sx={{
-                      position: "absolute",
-                      top: "2.8rem",
-                      right: "0.5rem",
-                      backgroundColor: "white",
-                      borderRadius: "20px",
-                      zIndex: "1",
-                    }}
-                  >
-                    <VisibilityIcon />
-                  </IconButton>
-                </div>
-                <AspectRatio
-                  sx={{ maxWidth: "90%", marginLeft: "50px" }}
-                  minHeight="120px"
-                  maxHeight="120px"
-                >
-                  <img
-                    style={{ width: "120px", height: "120px" }}
-                    src={e.images[0].image}
-                    alt="product"
-                  />
-                </AspectRatio>
-                <Button
-                  disabled={false}
-                  fullWidth
-                  variant="solid"
-                  size="md"
-                  color="primary"
-                  aria-label="Explore Bahamas Islands"
+                <Card
                   sx={{
-                    alignSelf: "center",
-                    fontWeight: 600,
-                    backgroundColor: "black",
-                    borderRadius: "none",
+                    width: 250,
+                    marginTop: "30px",
+                    backgroundColor: "rgba(245, 245, 245, 1)",
                   }}
                 >
-                  <AddShoppingCartIcon sx={{ marginRight: "15px" }} />
-                  Add to Cart
-                </Button>
-
-                <CardContent orientation="vertical" sx={{ gap: "5px" }}>
-                  <Typography level="title-lg">{e.productName}</Typography>
                   <div>
                     <Typography
-                      fontSize="lg"
-                      fontWeight="lg"
-                      sx={{ color: "red" }}
-                    >
-                      ${e.price - (e.price * (e.promotion / 100)).toFixed(2)}
-                      <Typography
-                        fontWeight="10px"
-                        sx={{
-                          color: "gray",
-                          marginLeft: "10px",
-                          textDecoration: "line-through",
-                        }}
-                      >
-                        ${e.price}
-                      </Typography>
-                    </Typography>
-                    <Stack
-                      spacing={1}
                       sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        gap: "10px",
+                        height: "25px",
+                        width: "55px",
+                        textAlign: "center",
+                        fontFamily: "cursive",
+                        borderRadius: "4px",
+                        color: "wheat",
+                        backgroundColor: "rgba(219, 68, 68, 1)",
                       }}
                     >
-                      <Rating
-                        name="half-rating"
-                        defaultValue={e.reviews.review}
-                        precision={0.5}
-                        readOnly
-                      />
-                      <span style={{ marginTop: "0px" }}>(80)</span>
-                    </Stack>
+                      -{e.promotion}%
+                    </Typography>
+                    <IconButton
+                      aria-label="bookmark Bahamas Islands"
+                      variant="plain"
+                      color="neutral"
+                      size="md"
+                      sx={{
+                        position: "absolute",
+                        top: "0.3rem",
+                        right: "0.5rem",
+                        backgroundColor: "white",
+                        borderRadius: "20px",
+                        zIndex: 1,
+                      }}
+                    >
+                      <FavoriteBorderIcon />
+                    </IconButton>
+                    <IconButton
+                      aria-label="bookmark Bahamas Islands"
+                      variant="plain"
+                      color="neutral"
+                      size="md"
+                      sx={{
+                        position: "absolute",
+                        top: "2.8rem",
+                        right: "0.5rem",
+                        backgroundColor: "white",
+                        borderRadius: "20px",
+                        zIndex: "1",
+                      }}
+                    >
+                      <VisibilityIcon />
+                    </IconButton>
                   </div>
-                </CardContent>
-              </Card>
-            </Box>
-          );
+                  <AspectRatio
+                    sx={{ maxWidth: "90%", marginLeft: "50px" }}
+                    minHeight="120px"
+                    maxHeight="120px"
+                  >
+                    <img
+                      style={{ width: "120px", height: "120px" }}
+                      src={e.images[0].image}
+                      alt="product"
+                    />
+                  </AspectRatio>
+                  <Button
+                    disabled={false}
+                    fullWidth
+                    variant="solid"
+                    size="md"
+                    color="primary"
+                    aria-label="Explore Bahamas Islands"
+                    sx={{
+                      alignSelf: "center",
+                      fontWeight: 600,
+                      backgroundColor: "black",
+                      borderRadius: "none",
+                    }}
+                  >
+                    <AddShoppingCartIcon sx={{ marginRight: "15px" }} />
+                    Add to Cart
+                  </Button>
+
+                  <CardContent orientation="vertical" sx={{ gap: "5px" }}>
+                    <Typography level="title-lg">{e.productName}</Typography>
+                    <div>
+                      <Typography
+                        fontSize="lg"
+                        fontWeight="lg"
+                        sx={{ color: "red" }}
+                      >
+                        ${e.price - (e.price * (e.promotion / 100)).toFixed(2)}
+                        <Typography
+                          fontWeight="10px"
+                          sx={{
+                            color: "gray",
+                            marginLeft: "10px",
+                            textDecoration: "line-through",
+                          }}
+                        >
+                          ${e.price}
+                        </Typography>
+                      </Typography>
+                      <Stack
+                        spacing={1}
+                        sx={{
+                          display: "flex",
+                          flexDirection: "row",
+                          gap: "10px",
+                        }}
+                      >
+                        <Rating
+                          name="half-rating"
+                          defaultValue={e.reviews.review}
+                          precision={0.5}
+                          readOnly
+                        />
+                        <span style={{ marginTop: "0px" }}>(80)</span>
+                      </Stack>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Box>
+            );
+          }
         })}
       </Box>
       <Box

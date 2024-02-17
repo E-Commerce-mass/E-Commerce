@@ -3,7 +3,6 @@ import Typography from "@mui/joy/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Button from "@mui/joy/Button";
-import LensIcon from "@mui/icons-material/Lens";
 
 const CategoriesJBL = () => {
   return (

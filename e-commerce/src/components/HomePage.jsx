@@ -16,6 +16,7 @@ import TodayS from './home/TodayS.jsx';
 import BrowseBy from './home/BrowseBy.jsx';
 import BestSelling from './home/BestSelling.jsx';
 import CategoriesJBL from './home/CategoriesJBL.jsx';
+import AllProducts from './home/AllProducts.jsx';
 
 
 const HomePage = () => {
@@ -29,6 +30,7 @@ const HomePage = () => {
       <BrowseBy/>
       <BestSelling/>
       <CategoriesJBL/>
+      <AllProducts/>
 
     {/* <div style={{display:"grid",placeItems:"center"}}>
     <img src="https://browntape.com/wp-content/uploads/2016/10/online-store.png"height={"300px"}width={"470px"} display={"block"}  />
