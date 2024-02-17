@@ -17,6 +17,8 @@ import { useContext, useState, useEffect, useRef } from "react";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import { useNavigate } from "react-router-dom";
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { Add } from "@mui/icons-material";
 
 const TodayS = () => {
   const productData = useContext(ProductContext);
@@ -162,18 +164,18 @@ const TodayS = () => {
                 </AspectRatio>
                 <Button
                   disabled={false}
+                  fullWidth
                   variant="solid"
                   size="md"
                   color="primary"
                   aria-label="Explore Bahamas Islands"
                   sx={{
-                    width: "100%",
                     alignSelf: "center",
                     fontWeight: 600,
                     backgroundColor: "black",
                     borderRadius: "none",
                   }}
-                >
+                ><AddShoppingCartIcon sx={{marginRight:'15px'}}/>
                   Add to Cart
                 </Button>
 

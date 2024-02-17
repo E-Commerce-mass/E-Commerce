@@ -48,30 +48,30 @@ const BrowseBy = () => {
         </Typography>
       </Box>
       <Box marginTop={5} maxWidth={'100%'} sx={{display:'inline-flex', gap:'15px'}}>
-        <Card sx={{ width: 200, height: 200, display:'flex',justifyContent:'center', alignItems:'center'}}>
-          <PhoneIphoneIcon sx={{fontSize:'50px'}}/>
+        <Button variant="outlined" sx={{color:"black", width: 200, height: 200, display:'flex',flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+          <PhoneIphoneIcon sx={{fontSize:'50px', opacity:'0.8'}}/>
           <Typography>Phones</Typography>
-        </Card>
-        <Card sx={{ width: 200, height: 200, display:'flex',justifyContent:'center', alignItems:'center'}}>
-          <LaptopIcon sx={{fontSize:'50px'}}/>
+        </Button>
+        <Button variant="outlined" sx={{color:"black", width: 200, height: 200, display:'flex',flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+          <LaptopIcon sx={{fontSize:'50px', opacity:'0.8'}}/>
           <Typography>Computers</Typography>
-        </Card>
-        <Card sx={{ width: 200, height: 200, display:'flex',justifyContent:'center', alignItems:'center'}}>
-          <WatchIcon sx={{fontSize:'50px'}}/>
+        </Button>
+        <Button variant="outlined" sx={{color:"black", width: 200, height: 200, display:'flex',flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+          <WatchIcon sx={{fontSize:'50px', opacity:'0.8'}}/>
           <Typography>SmartWatch</Typography>
-        </Card>
-        <Card sx={{ width: 200, height: 200, display:'flex',justifyContent:'center', alignItems:'center'}}>
-          <PhotoCameraIcon sx={{fontSize:'50px'}}/>
+        </Button>
+        <Button variant="outlined" sx={{color:"black", width: 200, height: 200, display:'flex',flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+          <PhotoCameraIcon sx={{fontSize:'50px', opacity:'0.8'}}/>
           <Typography>Camera</Typography>
-        </Card>
-        <Card sx={{ width: 200, height: 200, display:'flex',justifyContent:'center', alignItems:'center'}}>
-          <HeadphonesIcon sx={{fontSize:'50px'}}/>
+        </Button>
+        <Button variant="outlined" sx={{color:"black", width: 200, height: 200, display:'flex',flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+          <HeadphonesIcon sx={{fontSize:'50px', opacity:'0.8'}}/>
           <Typography>HeadPhones</Typography>
-        </Card>
-        <Card sx={{ width: 200, height: 200, display:'flex',justifyContent:'center', alignItems:'center'}}>
-          <VideogameAssetIcon sx={{fontSize:'50px'}}/>
+        </Button>
+        <Button variant="outlined" sx={{color:"black", width: 200, height: 200, display:'flex',flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+          <VideogameAssetIcon sx={{fontSize:'50px', opacity:'0.8'}}/>
           <Typography>Gaming</Typography>
-        </Card>
+        </Button>
       </Box>
     </Container>
   );
