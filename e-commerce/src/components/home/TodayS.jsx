@@ -17,7 +17,7 @@ import { useContext, useState, useEffect, useRef } from "react";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import { useNavigate } from "react-router-dom";
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { Add } from "@mui/icons-material";
 
 const TodayS = () => {
@@ -29,58 +29,62 @@ const TodayS = () => {
 
   return (
     <Container sx={{ marginTop: "100px" }}>
-      <Box>
-        <div
-          style={{
-            height: "40px",
-            width: "20px",
-            borderRadius: "4px",
-            backgroundColor: "rgba(219, 68, 68, 1)",
-          }}
-        >
-          <Typography
-            sx={{
-              marginLeft: "30px",
-              fontFamily: "Poppins",
-              color: "rgba(219, 68, 68, 1)",
-              paddingTop: "10px",
-              fontWeight: "bold",
+      <Box sx={{display:'flex', justifyContent:'space-between'}}>
+        <Box>
+          <div
+            style={{
+              height: "40px",
+              width: "20px",
+              borderRadius: "4px",
+              backgroundColor: "rgba(219, 68, 68, 1)",
             }}
           >
-            Today's
+            <Typography
+              sx={{
+                marginLeft: "30px",
+                fontFamily: "Poppins",
+                color: "rgba(219, 68, 68, 1)",
+                paddingTop: "10px",
+                fontWeight: "bold",
+              }}
+            >
+              Today's
+            </Typography>
+          </div>
+          <Typography
+            fontSize={40}
+            fontFamily={"Inter"}
+            letterSpacing={"4%"}
+            textColor={"common.black"}
+          >
+            Flash Sales
           </Typography>
-        </div>
-        <Typography
-          fontSize={40}
-          fontFamily={"Inter"}
-          letterSpacing={"4%"}
-          textColor={"common.black"}
-        >
-          Flash Sales
-        </Typography>
-        <Button
-          color="false"
-          sx={{ width: "30px", height: "30px" }}
-          className="nav-btn"
-          onClick={() => {
-            var container = sliderRef.current;
-            container -= scrollAmount;
-          }}
-        >
-          <NavigateBeforeIcon fontSize="large" />
-        </Button>
-        <Button
-          color="false"
-          sx={{ width: "30px", height: "30px" }}
-          className="nav-btn"
-          onClick={() => {
-            var container = sliderRef.current;
-            container += scrollAmount;
-            window.scrollBy(container, 0);
-          }}
-        >
-          <NavigateNextIcon fontSize="large" />
-        </Button>
+        </Box>
+        <Box>
+          <Button
+            color="false"
+            sx={{ width: "30px", height: "30px" }}
+            className="nav-btn"
+            onClick={() => {
+              var container = sliderRef.current;
+              container -= scrollAmount;
+            }}
+          >
+            <NavigateBeforeIcon fontSize="large" />
+          </Button>
+          <Button
+            color="false"
+            sx={{ width: "30px", height: "30px" }}
+            className="nav-btn"
+            onClick={() => {
+              var container = sliderRef.current;
+              container += scrollAmount;
+              window.scrollBy(container, 0);
+            }}
+          >
+            <NavigateNextIcon fontSize="large" />
+          </Button>
+        </Box>
       </Box>
       <Box
         sx={{
@@ -175,7 +179,8 @@ const TodayS = () => {
                     backgroundColor: "black",
                     borderRadius: "none",
                   }}
-                ><AddShoppingCartIcon sx={{marginRight:'15px'}}/>
+                >
+                  <AddShoppingCartIcon sx={{ marginRight: "15px" }} />
                   Add to Cart
                 </Button>
 
@@ -222,11 +227,19 @@ const TodayS = () => {
           );
         })}
       </Box>
-      <Box sx={{display:"flex", justifyContent:'center', marginTop:'15px'}}>
+      <Box
+        sx={{ display: "flex", justifyContent: "center", marginTop: "15px" }}
+      >
         <Button
           onClick={() => navigate("/flashsale")}
           color="neutral"
-          sx={{ mt: 3, mb: 2, width: "250px",height:'50px', bgcolor: "rgba(219, 68, 68, 1)" }}
+          sx={{
+            mt: 3,
+            mb: 2,
+            width: "250px",
+            height: "50px",
+            bgcolor: "rgba(219, 68, 68, 1)",
+          }}
         >
           View All Products
         </Button>
