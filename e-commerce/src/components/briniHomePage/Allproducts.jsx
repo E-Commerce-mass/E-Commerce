@@ -1,72 +1,169 @@
-import React, { useState } from "react";
-import Card from '@mui/material/Card';
+import React from "react";
+import AspectRatio from "@mui/joy/AspectRatio";
+import Button from "@mui/joy/Button";
+import Card from "@mui/joy/Card";
+import CardContent from "@mui/joy/CardContent";
+import IconButton from "@mui/joy/IconButton";
+import Typography from "@mui/joy/Typography";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Favorite from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ProductContext from "../UseContext";
+import Rating from "@mui/material/Rating";
+import Stack from "@mui/material/Stack";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { Box, ThemeProvider } from '@mui/system';
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
-const AllflashSale=(props)=>{
-    const navigate = useNavigate()
- 
-   return (
-    
-    <div>
-     <h1 style={{display:"grid",textAlign:"center",color:"rgb(247, 93, 93)",backgroundColor:"white",marginBlock:"20px"}}>--- Explore All Products ---</h1>
-     {props.prodd.map((e)=>{
-  
+const Allproducts = () => {
+  const navigate = useNavigate();
+  const productData = useContext(ProductContext);
+
   return (
+    <Box sx={{paddingLeft:"120px", paddingRight:'120px', paddingTop:"50px", width:'100%'}}>
+      {productData.map((e) => {
+        return (
+          <Box
+            display={"inline-flex"}
+            sx={{ marginRight: "30px" }}
+          >
+            <Card
+              sx={{
+                width: 250,
+                marginTop: "30px",
+                backgroundColor: "rgba(245, 245, 245, 1)",
+              }}
+            >
+              <div>
+                {e.new ? (
+                  <Typography
+                    sx={{
+                      height: "25px",
+                      width: "55px",
+                      textAlign: "center",
+                      fontFamily: "cursive",
+                      borderRadius: "4px",
+                      color: "white",
+                      backgroundColor: "rgba(0, 255, 102, 1)",
+                    }}
+                  >
+                    new
+                  </Typography>
+                ) : (
+                  <Typography
+                    sx={{
+                      height: "25px",
+                      width: "55px",
+                      textAlign: "center",
+                      fontFamily: "cursive",
+                      borderRadius: "4px",
+                      color: "transparent",
+                      backgroundColor: "transparent",
+                    }}
+                  >
+                    new
+                  </Typography>
+                )}
+                <IconButton
+                  aria-label="bookmark Bahamas Islands"
+                  variant="plain"
+                  color="neutral"
+                  size="md"
+                  sx={{
+                    position: "absolute",
+                    top: "0.3rem",
+                    right: "0.5rem",
+                    backgroundColor: "white",
+                    borderRadius: "20px",
+                    zIndex: 1,
+                  }}
+                >
+                  <FavoriteBorderIcon />
+                </IconButton>
+                <IconButton
+                  aria-label="bookmark Bahamas Islands"
+                  variant="plain"
+                  color="neutral"
+                  size="md"
+                  sx={{
+                    position: "absolute",
+                    top: "2.8rem",
+                    right: "0.5rem",
+                    backgroundColor: "white",
+                    borderRadius: "20px",
+                    zIndex: "1",
+                  }}
+                >
+                  <VisibilityIcon />
+                </IconButton>
+              </div>
+              <AspectRatio
+                sx={{ maxWidth: "90%", marginLeft: "50px" }}
+                minHeight="120px"
+                maxHeight="120px"
+              >
+                <img
+                  style={{ width: "120px", height: "120px" }}
+                  src={e.images[0].image}
+                  alt="product"
+                />
+              </AspectRatio>
+              <Button
+                disabled={false}
+                fullWidth
+                variant="solid"
+                size="md"
+                color="primary"
+                aria-label="Explore Bahamas Islands"
+                sx={{
+                  alignSelf: "center",
+                  fontWeight: 600,
+                  backgroundColor: "black",
+                  borderRadius: "none",
+                }}
+              >
+                <AddShoppingCartIcon sx={{ marginRight: "15px" }} />
+                Add to Cart
+              </Button>
 
+              <CardContent orientation="vertical" sx={{ gap: "5px" }}>
+                <Typography level="title-lg">{e.productName}</Typography>
+                <CardContent orientation="horizontal">
+                  <Typography
+                    fontSize="s"
+                    fontWeight="lg"
+                    sx={{ color: "red" }}
+                  >
+                    ${e.price}
+                  </Typography>
+                  <Stack
+                    spacing={1}
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      gap: "5px",
+                    }}
+                  >
+                    <Rating
+                      name="half-rating"
+                      defaultValue={e.reviews.length}
+                      precision={0.5}
+                      readOnly
+                    />
+                    <span style={{ marginTop: "0px" }}>
+                      ({e.reviews.length})
+                    </span>
+                  </Stack>
+                </CardContent>
+              </CardContent>
+            </Card>
+          </Box>
+        );
+      })}
+    </Box>
+  );
+};
 
-    <div style={{display:"inline-grid",marginBlock:"50px",marginLeft:"50px",width:"200px",height:"280px"}}>
-
-<Card sx={{ maxWidth: 250 }}>
-    <CardMedia
-      sx={{ height: 100 }}
-      
-      image={e.images[0] &&  e.images[0].image}
-      title={e.productName}
-    />
-    <CardContent>
-      <Typography gutterBottom variant="h5" component="div">
-       {e.productName}
-      </Typography>
-      <Typography variant="body2" color="text.secondary">
-      {e.price}
-      </Typography>
-     <Typography>   </Typography>
-       {e.color}
-       <Typography> {e.quantity}  </Typography>
-     
-       <Typography>  
-       {e.new}
-      </Typography>
-    </CardContent>
-    <CardActions>
-      
-      <Button size="small" onClick={()=>{navigate("/productdescription")}}>Learn More</Button>
-    </CardActions>
-  </Card>
-  </div>
-
-  )
-})}
-<div style={{marginTop:"-10px",marginLeft:"600px"}}>
-
-  </div>
-
-</div>
-)
-}
-         
-          
-
-           
-  
-   
-   
-
-
-export default AllflashSale;
+export default Allproducts;

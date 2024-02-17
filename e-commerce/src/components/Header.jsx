@@ -25,7 +25,7 @@ const Header = () => {
                     variant="h6"
                     noWrap
                     component='a'
-                    href="/home"
+                    href="/"
                     sx={{
                       ml: 15,
                       display: { xs: 'none', md: 'flex' },
@@ -43,7 +43,7 @@ const Header = () => {
                         variant="h6"
                         noWrap
                         component='a'
-                        href="/home"
+                        href="/"
                         sx={{
                         
                         display: { xs: 'none', md: 'flex'},

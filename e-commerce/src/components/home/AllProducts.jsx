@@ -220,11 +220,11 @@ const AllProducts = () => {
                     >
                       <Rating
                         name="half-rating"
-                        defaultValue={e.reviews.review}
+                        defaultValue={e.reviews.length}
                         precision={0.5}
                         readOnly
                       />
-                      <span style={{ marginTop: "0px" }}>(80)</span>
+                      <span style={{ marginTop: "0px" }}>({e.reviews.length})</span>
                     </Stack>
                   </CardContent>
                 </CardContent>
@@ -237,7 +237,7 @@ const AllProducts = () => {
         sx={{ display: "flex", justifyContent: "center", marginTop: "15px" }}
       >
         <Button
-          onClick={() => navigate("/flashsale")}
+          onClick={() => navigate("/allproduct")}
           color="neutral"
           sx={{
             mt: 3,

@@ -17,7 +17,6 @@ const CategoriesJBL = () => {
         justifyContent: "space-between",
       }}
     >
-      {/* <img src="https://res.cloudinary.com/hzxyensd5/image/upload/v1708132372/mmdoxljd2mv6urxuodjs.png" alt="" /> */}
       <Box
         width={"40%"}
         display={"flex"}
@@ -83,7 +82,9 @@ const CategoriesJBL = () => {
             }}
           >
             <h5 style={{ height: "15px" }}>59</h5>
-            <div style={{ fontSize: "11px", fontFamily: "Poppins" }}>Minutes</div>
+            <div style={{ fontSize: "11px", fontFamily: "Poppins" }}>
+              Minutes
+            </div>
           </div>
           <div
             style={{
@@ -101,7 +102,9 @@ const CategoriesJBL = () => {
             }}
           >
             <h5 style={{ height: "15px" }}>35</h5>
-            <div style={{ fontSize: "11px", fontFamily: "Poppins" }}>Seconds</div>
+            <div style={{ fontSize: "11px", fontFamily: "Poppins" }}>
+              Seconds
+            </div>
           </div>
         </Box>
         <Button

@@ -48,14 +48,14 @@ function App() {
         <Route path="/gaming" element={<Gaming prodd={dataproduct}/>} ></Route>
         <Route path="/sports" element={<Sports prodd={dataproduct}/>} ></Route>
         <Route path="/medecine" element={<Medecine prodd={dataproduct}/>} ></Route>
-        <Route path="/allproduct" element={<Allproducts prodd={dataproduct}/>}> </Route>
-        <Route path="/newarrivals"  element={<Allnewarrivals prodd={dataproduct}/>}></Route>
+        <Route path="/allproduct" Component={Allproducts}> </Route>
+        <Route path="/newarrivals" Component={Allnewarrivals}></Route>
         <Route path="/contact" Component={Contact}  ></Route>
         <Route path="/aboutus" Component={Aboutus}  ></Route>  
         <Route path='/' Component={HomePage}></Route>
         <Route path='/signup' Component={SignUp}></Route>  
         <Route path='/signin' Component={SignIn}></Route>
-        <Route path="/flashsale" Component={FlashSale}></Route>
+        <Route path="/flashsale" Component={AllflashSale}></Route>
       </Routes>
     </ProductContext.Provider>
     </BrowserRouter>

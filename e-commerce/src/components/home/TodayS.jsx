@@ -18,7 +18,6 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import { useNavigate } from "react-router-dom";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { Add } from "@mui/icons-material";
 
 const TodayS = () => {
   const productData = useContext(ProductContext);
@@ -212,14 +211,14 @@ const TodayS = () => {
                           flexDirection: "row",
                           gap: "10px",
                         }}
-                      >
+                      >{console.log(e.reviews)}
                         <Rating
                           name="half-rating"
-                          defaultValue={e.reviews.review}
+                          defaultValue={e.reviews.length}
                           precision={0.5}
                           readOnly
                         />
-                        <span style={{ marginTop: "0px" }}>(80)</span>
+                        <span style={{ marginTop: "0px" }}>({e.reviews.length})</span>
                       </Stack>
                     </div>
                   </CardContent>
