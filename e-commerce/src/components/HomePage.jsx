@@ -14,6 +14,7 @@ import ProductContext from './UseContext.js';
 import SlideCategories from './home/SlideCategories.jsx';
 import TodayS from './home/TodayS.jsx';
 import BrowseBy from './home/BrowseBy.jsx';
+import BestSelling from './home/BestSelling.jsx';
 
 
 const HomePage = () => {
@@ -25,6 +26,7 @@ const HomePage = () => {
       <SlideCategories/>
       <TodayS/>
       <BrowseBy/>
+      <BestSelling/>
 
     {/* <div style={{display:"grid",placeItems:"center"}}>
     <img src="https://browntape.com/wp-content/uploads/2016/10/online-store.png"height={"300px"}width={"470px"} display={"block"}  />

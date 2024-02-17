@@ -26,7 +26,7 @@ const TodayS = () => {
   const time = Date();
 
   return (
-    <Container sx={{ marginTop: "150px" }}>
+    <Container sx={{ marginTop: "100px" }}>
       <Box>
         <div
           style={{
@@ -37,7 +37,7 @@ const TodayS = () => {
           }}
         >
           <Typography
-            style={{
+            sx={{
               marginLeft: "30px",
               fontFamily: "Poppins",
               color: "rgba(219, 68, 68, 1)",

@@ -16,7 +16,7 @@ import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 
 const BrowseBy = () => {
   return (
-    <Container>
+    <Container sx={{ marginTop: "100px" }}>
       <Box>
         <div
           style={{
@@ -27,7 +27,7 @@ const BrowseBy = () => {
           }}
         >
           <Typography
-            style={{
+            sx={{
               marginLeft: "30px",
               fontFamily: "Poppins",
               color: "rgba(219, 68, 68, 1)",
