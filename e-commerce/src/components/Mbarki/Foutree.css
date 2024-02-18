@@ -1,0 +1,12 @@
+.FoutrePosition{
+    margin-left: 120px;
+    margin-top: 40px;
+    gap: 87px;
+}
+.iconWrapper:hover {
+    transform: scale(1.2); 
+  }
+
+  .imageWrapper:hover {
+    transform: scale(1.1);
+  }
