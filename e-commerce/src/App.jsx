@@ -44,7 +44,11 @@ function App() {
   // }
 
   return (
+    
+    <>
+    <Header/>
     <BrowserRouter>
+    <ProductContext.Provider value={dataproduct}>
       <Routes>
         <Route path='/admin' Component={AdminDashboard}></Route>
         <Route path="/womanfashion" element={<Womanfashion prodd={dataproduct}/>} ></Route>
@@ -63,8 +67,9 @@ function App() {
         <Route path="/flashsale" Component={AllflashSale}></Route>
         <Route path='/oneview' element={<OneView />}></Route>
       </Routes>
+    </ProductContext.Provider>
     </BrowserRouter>
+    </>
   )
 }
-
-export default App
+export default App;
