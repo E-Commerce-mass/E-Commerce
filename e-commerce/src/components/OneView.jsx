@@ -20,6 +20,7 @@ import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
 import CachedIcon from "@mui/icons-material/Cached";
 import SvgIcon from "@mui/material/SvgIcon";
 import Icon from "@mui/material/Icon";
+import axios from "axios";
 
 const OneView = () => {
   const location = useLocation();
@@ -27,6 +28,7 @@ const OneView = () => {
   const [selectedValue, setSelectedValue] = React.useState("a");
   const [number, setNumber] = React.useState(1);
   const [quantity, setQuantity] = React.useState(0);
+  const [image, setimage] = React.useState([]);
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
@@ -56,7 +58,7 @@ const OneView = () => {
         >
           <Box
             sx={{
-              backgroundColor: "black",
+              backgroundColor: "white",
               borderRadius: "4px",
               width: "170px",
               height: "600px",
@@ -67,58 +69,31 @@ const OneView = () => {
               flexGrow: 0,
             }}
           >
-            <Button
-              color="false"
-              sx={{
-                backgroundColor: "red",
-                borderRadius: "4px",
-                width: "170px",
-                height: "138px",
-                flex: "none",
-                order: 0,
-                flexGrow: 0,
-              }}
-            ></Button>
-            <Button
-              color="false"
-              sx={{
-                backgroundColor: "red",
-                borderRadius: "4px",
-                width: "170px",
-                height: "138px",
-                flex: "none",
-                order: 0,
-                flexGrow: 0,
-              }}
-            ></Button>
-            <Button
-              color="false"
-              sx={{
-                backgroundColor: "red",
-                borderRadius: "4px",
-                width: "170px",
-                height: "138px",
-                flex: "none",
-                order: 0,
-                flexGrow: 0,
-              }}
-            ></Button>
-            <Button
-              color="false"
-              sx={{
-                backgroundColor: "red",
-                borderRadius: "4px",
-                width: "170px",
-                height: "138px",
-                flex: "none",
-                order: 0,
-                flexGrow: 0,
-              }}
-            ></Button>
+            {location.state.images.map((e) => {
+              //   if (!e.image[0]) {
+              return (
+                <Button
+                  onClick={() => setimage(e.image)}
+                  color="false"
+                  sx={{
+                    backgroundColor: "white",
+                    borderRadius: "4px",
+                    width: "170px",
+                    height: "138px",
+                    flex: "none",
+                    order: 0,
+                    flexGrow: 0,
+                  }}
+                >
+                  <img style={{ zIndex: 1 }} width={135} src={e.image} alt="" />
+                </Button>
+              );
+              //   }
+            })}
           </Box>
           <Box
             sx={{
-              backgroundColor: "black",
+              backgroundColor: "white",
               borderRadius: "4px",
               width: "500px",
               height: "600px",
@@ -126,7 +101,10 @@ const OneView = () => {
               order: 1,
               flexGrow: 0,
             }}
-          ></Box>
+          >
+            {" "}
+            <img width={"500px"} height={"600px"} defaultValue={location.state.images[0].image} src={image} alt="" />
+          </Box>
           <Box
             sx={{
               backgroundColor: "white",
@@ -303,11 +281,11 @@ const OneView = () => {
                 <Button
                   onChange={(e) => setQuantity(e.target.value)}
                   variant="outlined"
-                  sx={{ width: "70px", borderRadius: 0, fontSize: "20px" }}
+                  sx={{ width: "70px", borderRadius: 0, fontSize: "20px",color:'black' }}
                 >
                   {number}
                 </Button>
-                <Button onClick={() => setNumber(number + 1)} color="danger">
+                <Button onClick={() => {setNumber(number + 1)}} color="danger">
                   <AddOutlinedIcon></AddOutlinedIcon>
                 </Button>
               </ButtonGroup>
