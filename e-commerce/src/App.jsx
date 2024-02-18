@@ -1,10 +1,10 @@
 import react, { useEffect, useState, createContext, useContext } from 'react'
 import { BrowserRouter , Routes, Route } from "react-router-dom";
+import Header from './components/Header.jsx';
 import HomePage from './components/HomePage.jsx'
 import AdminDashboard from "./components/adminComponents/AdminDashboard.jsx"
 import axios from "axios"
 import Womanfashion from "./components/briniHomePage/Womanfashion.jsx"
-import Header from './components/Header.jsx';
 import Manfashion from "./components/briniHomePage/Manfashion.jsx";
 import Sports from "./components/briniHomePage/Sports.jsx";
 import Gaming from './components/briniHomePage/Gaming.jsx';
@@ -19,9 +19,12 @@ import FlashSale from "./components/briniHomePage/FlashSale.jsx"
 import SignIn from "./components/SignIn.jsx"
 import SignUp from "./components/SignUp.jsx"
 import ProductContext from './components/UseContext.js';
+import OneView from "./components/OneView.jsx"
 
 function App() {
   const [dataproduct, setDataproduct] = useState([])
+  const [one, setOne] = useState({})
+  
 
   useEffect(() => {
     axios.get("http://localhost:8080/product/getall")
@@ -33,6 +36,12 @@ function App() {
       console.error(err)
     })
   }, [])
+
+  // const getOne = (data) => {
+  //   // const navigate = useNavigate()
+  //   setOne(data)
+  //   console.log(data);
+  // }
 
   return (
     
@@ -52,10 +61,11 @@ function App() {
         <Route path="/newarrivals" Component={Allnewarrivals}></Route>
         <Route path="/contact" Component={Contact}  ></Route>
         <Route path="/aboutus" Component={Aboutus}  ></Route>  
-        <Route path='/' Component={HomePage}></Route>
+        <Route path='/' element={<HomePage />}></Route>
         <Route path='/signup' Component={SignUp}></Route>  
         <Route path='/signin' Component={SignIn}></Route>
         <Route path="/flashsale" Component={AllflashSale}></Route>
+        <Route path='/oneview' element={<OneView />}></Route>
       </Routes>
     </ProductContext.Provider>
     </BrowserRouter>

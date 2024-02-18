@@ -167,6 +167,7 @@ const TodayS = () => {
                     />
                   </AspectRatio>
                   <Button
+                  onClick={()=>navigate('/oneview', {state: e})}
                     disabled={false}
                     fullWidth
                     variant="solid"
@@ -211,7 +212,7 @@ const TodayS = () => {
                           flexDirection: "row",
                           gap: "10px",
                         }}
-                      >{console.log(e.reviews)}
+                      >
                         <Rating
                           name="half-rating"
                           defaultValue={e.reviews.length}
