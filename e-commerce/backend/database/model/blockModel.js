@@ -11,4 +11,9 @@ const Block = sequelize.define('block', {
   timestamps: false
 })
 
-module.exports = {Block}
+const addToblock = (data) => {
+  return Block.create(data)
+}
+
+
+module.exports = {Block,addToblock}
