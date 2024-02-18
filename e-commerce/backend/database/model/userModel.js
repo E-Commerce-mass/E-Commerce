@@ -35,8 +35,23 @@ const editUser = (id, data) => {
   return User.update(data, {where: {iduser: id}})
 }
 
-const deleteUser = (id) => {
-  return User.destroy({where: {iduser: id}})
+const getAll = () => {
+  return User.findAll()
 }
 
-module.exports = {User, getOneUser, addUser, editUser, deleteUser}
+const findClients = () => {
+return User.findAll({
+  where: {
+    role: "client"
+  }
+});
+}
+const findSellers = () => {
+  return User.findAll({
+    where: {
+      role: "seller"
+    }
+  });
+  }
+
+module.exports = {User, getOneUser, addUser, editUser, getAll, findClients, findSellers}

@@ -2,7 +2,7 @@ require("dotenv").config()
 const jwt=require('jsonwebtoken')
 const bcrypt=require('bcrypt')
 
-const {getOneUser, addUser, editUser, deleteUser} = require('../model/userModel')
+const {getOneUser, addUser, editUser, deleteUser,getAll,findClients,findSellers} = require('../model/userModel')
 const secretKey = 'mass'
 console.log(secretKey)
 
@@ -34,7 +34,7 @@ const signIn = async (req, res) => {
                     const isMatch = await bcrypt.compare(password, result.password)
                     if(isMatch){
                         const token = jwt.sign({emailPhone: emailPhone}, secretKey)
-                        res.status(200).json({msg: 'user found', token})
+                        res.status(200).json({msg: 'user found' ,iduser: result.iduser, role: result.role,token})
                     }
                     else{
                         res.status(401).json("wrong email or password")
@@ -88,5 +88,36 @@ const destroyUser = async (req, res) => {
         res.status(500).json(err)
     }
 }
+const getusers = async (req,res) => {
+const x= await getAll()
+try{
+    res.send(x)
+}
+catch(err){
+    console.log(err);
+}
+}
 
-module.exports = {signUp, signIn, updateUser, destroyUser}
+const getClients = async (req,res) =>{
+
+    const x= await findClients()
+    try{
+        res.send(x)
+    }
+    catch(err){
+console.log(err);
+    }
+}
+
+const getSellers = async (req,res) =>{
+
+    const x= await findSellers()
+    try{
+        res.send(x)
+    }
+    catch(err){
+console.log(err);
+    }
+}
+
+module.exports = {signUp, signIn, updateUser, destroyUser, getusers, getClients, getSellers}

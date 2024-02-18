@@ -7,7 +7,7 @@ const Reviews = sequelize.define('reviews', {
     primaryKey: true,
     autoIncrement: true
   },
-  review: DataTypes.STRING
+  review: DataTypes.INTEGER
 }, {
   tableName: 'reviews',
   timestamps: false
