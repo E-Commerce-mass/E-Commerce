@@ -28,8 +28,8 @@ const OneView = () => {
   const [selectedValue, setSelectedValue] = React.useState("a");
   const [number, setNumber] = React.useState(1);
   const [quantity, setQuantity] = React.useState(0);
-  const [image, setimage] = React.useState([]);
-
+  const [image, setimage] = React.useState(location.state.images[0].image);
+  
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };

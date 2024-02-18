@@ -135,6 +135,7 @@ const Allproducts = () => {
                   backgroundColor: "black",
                   borderRadius: "none",
                 }}
+                onClick={()=>navigate('/oneview', {state: e})}
               >
                 <AddShoppingCartIcon sx={{ marginRight: "15px" }} />
                 Add to Cart

@@ -179,13 +179,14 @@ const TodayS = () => {
                     />
                   </AspectRatio>
                   <Button
+                  id="addcart"
                   onClick={()=>navigate('/oneview', {state: e})}
                     disabled={false}
                     fullWidth
                     variant="solid"
                     size="md"
                     color="primary"
-                    aria-label="Explore Bahamas Islands"
+                    aria-label=""
                     sx={{
                       alignSelf: "center",
                       fontWeight: 600,
