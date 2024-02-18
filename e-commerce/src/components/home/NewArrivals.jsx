@@ -5,6 +5,17 @@ import Container from "@mui/material/Container";
 import Button from "@mui/joy/Button";
 
 const NewArrivals = () => {
+
+  const hundleLike = (data) => {
+    axios.post("http://localhost:8080/favorit/like", data)
+    .then((result)=>{
+      console.log(result);
+    })
+    .catch((err)=>{
+      console.error(err)
+    })
+  }
+  
   return (
     <Container sx={{ marginTop: "100px" }}>
       <Box>

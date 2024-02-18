@@ -18,11 +18,22 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import { useNavigate } from "react-router-dom";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import axios from "axios";
 
 const AllFlashsale = () => {
   const productData = useContext(ProductContext);
   const navigate = useNavigate();
   const time = Date();
+
+  const hundleLike = (data) => {
+    axios.post("http://localhost:8080/favorit/like", data)
+    .then((result)=>{
+      console.log(result);
+    })
+    .catch((err)=>{
+      console.error(err)
+    })
+  }
 
   return (
     <Box
@@ -71,6 +82,7 @@ const AllFlashsale = () => {
                       borderRadius: "20px",
                       zIndex: 1,
                     }}
+                    onClick={()=>hundleLike({product:e,userIduser:1})}
                   >
                     <FavoriteBorderIcon />
                   </IconButton>
@@ -115,6 +127,7 @@ const AllFlashsale = () => {
                     backgroundColor: "black",
                     borderRadius: "none",
                   }}
+                  onClick={()=>navigate('/oneview', {state: e})}
                 >
                   <AddShoppingCartIcon sx={{ marginRight: "15px" }} />
                   Add to Cart

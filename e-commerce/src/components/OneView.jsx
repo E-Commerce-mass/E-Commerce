@@ -21,15 +21,15 @@ import CachedIcon from "@mui/icons-material/Cached";
 import SvgIcon from "@mui/material/SvgIcon";
 import Icon from "@mui/material/Icon";
 import axios from "axios";
+import OneViewRelated from "./OneViewRelated";
 
 const OneView = () => {
   const location = useLocation();
-  console.log(location.state);
   const [selectedValue, setSelectedValue] = React.useState("a");
   const [number, setNumber] = React.useState(1);
   const [quantity, setQuantity] = React.useState(0);
-  const [image, setimage] = React.useState([]);
-
+  const [image, setimage] = React.useState(location.state.images[0].image);
+  
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
@@ -103,7 +103,7 @@ const OneView = () => {
             }}
           >
             {" "}
-            <img width={"500px"} height={"600px"} defaultValue={location.state.images[0].image} src={image} alt="" />
+            <img width={"500px"} height={"600px"} src={image} alt="" />
           </Box>
           <Box
             sx={{
@@ -281,11 +281,21 @@ const OneView = () => {
                 <Button
                   onChange={(e) => setQuantity(e.target.value)}
                   variant="outlined"
-                  sx={{ width: "70px", borderRadius: 0, fontSize: "20px",color:'black' }}
+                  sx={{
+                    width: "70px",
+                    borderRadius: 0,
+                    fontSize: "20px",
+                    color: "black",
+                  }}
                 >
                   {number}
                 </Button>
-                <Button onClick={() => {setNumber(number + 1)}} color="danger">
+                <Button
+                  onClick={() => {
+                    setNumber(number + 1);
+                  }}
+                  color="danger"
+                >
                   <AddOutlinedIcon></AddOutlinedIcon>
                 </Button>
               </ButtonGroup>
@@ -399,6 +409,7 @@ const OneView = () => {
             </Box>
           </Box>
         </Box>
+        <OneViewRelated />
       </Container>
     </div>
   );

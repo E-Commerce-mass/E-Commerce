@@ -13,4 +13,8 @@ const Favorit = sequelize.define('favorit', {
   timestamps: false
 })
 
-module.exports = {Favorit}
+const addFav = (data) => {
+  return Favorit.create(data)
+}
+
+module.exports = {Favorit, addFav}

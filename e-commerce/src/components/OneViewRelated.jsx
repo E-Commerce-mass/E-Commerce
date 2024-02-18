@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import AspectRatio from "@mui/joy/AspectRatio";
 import Button from "@mui/joy/Button";
 import Card from "@mui/joy/Card";
@@ -9,7 +9,7 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Favorite from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ProductContext from "../UseContext";
+import ProductContext from "./UseContext";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -18,27 +18,17 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import { useNavigate } from "react-router-dom";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import axios from "axios";
+import { useLocation } from "react-router-dom";
 
-const BestSelling = () => {
+const OneViewRelated = () => {
+  const location = useLocation();
   const productData = useContext(ProductContext);
   const sliderRef = useRef(0);
   const scrollAmount = 100;
   const navigate = useNavigate();
 
-  const hundleLike = (data) => {
-    axios
-      .post("http://localhost:8080/favorit/like", data)
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
   return (
-    <Container sx={{ marginTop: "100px" }}>
+    <Container sx={{ marginTop: "200px" }}>
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box>
           <div
@@ -59,33 +49,33 @@ const BestSelling = () => {
                 fontWeight: "bold",
               }}
             >
-              This Month
+              Related Items
             </Typography>
           </div>
-          <Typography
-            fontSize={40}
-            fontFamily={"Inter"}
-            letterSpacing={"4%"}
-            textColor={"common.black"}
-          >
-            Best Selling Products
-          </Typography>
         </Box>
-        <Box
-          sx={{ display: "flex", justifyContent: "center", marginTop: "15px" }}
-        >
+        <Box>
           <Button
-            onClick={() => navigate("/newarrivals")}
-            color="neutral"
-            sx={{
-              mt: 3,
-              mb: 2,
-              width: "150px",
-              height: "50px",
-              bgcolor: "rgba(219, 68, 68, 1)",
+            color="false"
+            sx={{ width: "30px", height: "30px" }}
+            className="nav-btn"
+            onClick={() => {
+              var container = sliderRef.current;
+              container -= scrollAmount;
             }}
           >
-            View All
+            <NavigateBeforeIcon fontSize="large" />
+          </Button>
+          <Button
+            color="false"
+            sx={{ width: "30px", height: "30px" }}
+            className="nav-btn"
+            onClick={() => {
+              var container = sliderRef.current;
+              container += scrollAmount;
+              window.scrollBy(container, 0);
+            }}
+          >
+            <NavigateNextIcon fontSize="large" />
           </Button>
         </Box>
       </Box>
@@ -98,7 +88,10 @@ const BestSelling = () => {
         }}
       >
         {productData.map((e) => {
-          if (e.reviews.length) {
+          if (
+            location.state.categories[0].categoryname ===
+            e.categories[0].categoryname
+          ) {
             return (
               <Box
                 display={"inline-flex"}
@@ -113,8 +106,37 @@ const BestSelling = () => {
                   }}
                 >
                   <div>
+                    {e.new ? (
+                      <Typography
+                        sx={{
+                          height: "25px",
+                          width: "55px",
+                          textAlign: "center",
+                          fontFamily: "cursive",
+                          borderRadius: "4px",
+                          color: "white",
+                          backgroundColor: "rgba(0, 255, 102, 1)",
+                        }}
+                      >
+                        new
+                      </Typography>
+                    ) : (
+                      <Typography
+                        sx={{
+                          height: "25px",
+                          width: "55px",
+                          textAlign: "center",
+                          fontFamily: "cursive",
+                          borderRadius: "4px",
+                          color: "transparent",
+                          backgroundColor: "transparent",
+                        }}
+                      >
+                        new
+                      </Typography>
+                    )}
                     <IconButton
-                      aria-label=""
+                      aria-label="bookmark Bahamas Islands"
                       variant="plain"
                       color="neutral"
                       size="md"
@@ -126,12 +148,11 @@ const BestSelling = () => {
                         borderRadius: "20px",
                         zIndex: 1,
                       }}
-                      onClick={() => hundleLike({ product: e, userIduser: 1 })}
                     >
                       <FavoriteBorderIcon />
                     </IconButton>
                     <IconButton
-                      aria-label=""
+                      aria-label="bookmark Bahamas Islands"
                       variant="plain"
                       color="neutral"
                       size="md"
@@ -179,33 +200,22 @@ const BestSelling = () => {
 
                   <CardContent orientation="vertical" sx={{ gap: "5px" }}>
                     <Typography level="title-lg">{e.productName}</Typography>
-                    <div>
+                    <CardContent orientation="horizontal">
                       <Typography
-                        fontSize="lg"
+                        fontSize="s"
                         fontWeight="lg"
                         sx={{ color: "red" }}
                       >
-                        ${e.price - (e.price * (e.promotion / 100)).toFixed(2)}
-                        <Typography
-                          fontWeight="10px"
-                          sx={{
-                            color: "gray",
-                            marginLeft: "10px",
-                            textDecoration: "line-through",
-                          }}
-                        >
-                          ${e.price}
-                        </Typography>
+                        ${e.price}
                       </Typography>
                       <Stack
                         spacing={1}
                         sx={{
                           display: "flex",
                           flexDirection: "row",
-                          gap: "10px",
+                          gap: "5px",
                         }}
                       >
-                        {console.log(e.reviews)}
                         <Rating
                           name="half-rating"
                           defaultValue={e.reviews.length}
@@ -216,7 +226,7 @@ const BestSelling = () => {
                           ({e.reviews.length})
                         </span>
                       </Stack>
-                    </div>
+                    </CardContent>
                   </CardContent>
                 </Card>
               </Box>
@@ -228,4 +238,4 @@ const BestSelling = () => {
   );
 };
 
-export default BestSelling;
+export default OneViewRelated;
