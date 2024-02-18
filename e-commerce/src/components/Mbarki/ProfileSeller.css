@@ -1,0 +1,53 @@
+.selernav{
+    padding-top: 5%;
+    padding-left: 4%;
+}
+.ListProfile{
+    padding-top: 7%;
+}
+.listItemSeller {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    width: 35vh;
+    background-color:#0000000d;
+    transition: background-color 0.3s; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Adjust the values as needed */
+    cursor: pointer;
+
+}
+.salah{
+    display:flex;
+    gap:20px;
+}
+.listItemSeller:hover {
+    /* transform: scale(1.01);  */
+    background-color: #ddd8d8c9; 
+}
+/* .carproductuselled{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: white;
+    width: 100px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+} */
+.deletebuttonseller{
+    padding-left: 180px;
+    transform: scale(1.11);
+    
+}
+.imagecontentseller{
+    margin-top: 1px;
+    padding-left: 16px;
+    width: 180px;
+    height: 130px;
+}
+.iconDelete :hover{
+    transform: scale(1.11); 
+}

@@ -26,5 +26,18 @@ const getAllproducts = () => {
   return Products.findAll({include: [{model: Image, attributes: ["image"]}, {model: Reviews, attributes: ["review"]}, {model:Categories,attributes:["categoryname"]}]})
 
 }
+const getAllProduct=(id)=>{
+  return Products.findAll({where: {userIduser:id}})
+}
+const addproduct=(data)=>{
+  return Products.create(data)
+}
+const editproduct=(data,id)=>{
+  return Products.update(data,{where:{idproducts:id}})
+}
+const deleteProduct=(id)=>{
+  return Products.destroy({where :{idproducts:id}})
+}
 
-module.exports = {Products,getAllproducts}
+module.exports = {Products,getAllProduct,addproduct,editproduct,deleteProduct
+,getAllproducts}

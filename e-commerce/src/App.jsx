@@ -1,7 +1,13 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import react, { useEffect, useState, createContext, useContext } from 'react'
-import { BrowserRouter , Routes, Route } from "react-router-dom";
 import Header from './components/Header.jsx';
 import HomePage from './components/HomePage.jsx'
+import ProfileSeller from './components/Mbarki/ProifleSeller.jsx'
+import Add from './components/Mbarki/Add.jsx'
+import AddProductSeller from './components/Mbarki/AddProductSeller.jsx';
+import Edit from './components/Mbarki/EditProduct.jsx'
+import Foutree from './components/Mbarki/Foutree.jsx'
+import Images from './components/Mbarki/Images.jsx';
 import AdminDashboard from "./components/adminComponents/AdminDashboard.jsx"
 import axios from "axios"
 import Womanfashion from "./components/briniHomePage/Womanfashion.jsx"
@@ -22,6 +28,8 @@ import ProductContext from './components/UseContext.js';
 import OneView from "./components/OneView.jsx"
 
 function App() {
+  
+  
   const [dataproduct, setDataproduct] = useState([])
   const [one, setOne] = useState({})
   
@@ -50,6 +58,14 @@ function App() {
     <BrowserRouter>
     <ProductContext.Provider value={dataproduct}>
       <Routes>
+        <Route path='/' Component={HomePage}></Route>
+        <Route path ="/ProfileSeller" Component={ProfileSeller}/>  
+        <Route path ="/EditSeller" Component={Add}/>  
+        <Route path ="/addProductSeller" Component={AddProductSeller}/>  
+        <Route path ="/editProductSeller" Component={Edit}/>  
+        <Route path ="/foutre" Component={Foutree}/>  
+        <Route path ="/Images" Component={Images}/>  
+
         <Route path='/admin' Component={AdminDashboard}></Route>
         <Route path="/womanfashion" element={<Womanfashion prodd={dataproduct}/>} ></Route>
         <Route path="/manfashion" element={<Manfashion prodd={dataproduct}/>} ></Route>

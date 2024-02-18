@@ -16,4 +16,11 @@ const Image = sequelize.define('images', {
 const getOneimage = (pr) => {
     return Image.findAll({where: {productIdProducts: pr}})
   }
-module.exports = {Image,getOneimage}
+const addImage = (data) => {
+    return Image.create(data)
+}
+const getAllIm=(id)=>{
+    return Image.findAll({where: {productIdproducts:id}})
+  }
+
+module.exports = {Image,getOneimage, addImage,getAllIm}

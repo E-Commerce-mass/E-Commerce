@@ -21,34 +21,45 @@ const columns = [
   ];
   
 
-const Dashboards =()=>{
+const Blocked =()=>{
 const[data,setData]=useState([])
 const[selected,setRowSelectionModel]=useState("")
 const[refresh,setRefresh]=useState(false)
+console.log(selected);
 console.log(data);
 useEffect(()=>{
 axios.get('http://localhost:8080/user/getallusers')
 .then((res)=>{
-setData(res.data.filter((el)=>{ 
-return el.blocks.length===0
-}))
-console.log(res.data);
+setData(res.data.filter((el)=>{
+  return el.blocks.length>0
+  
+  }))
 })
 .catch((err)=>{
     console.log(err);
 })
 },[refresh])
 
-
-
-
 const Addtoblock=()=>{
 selected.forEach((el)=>{
 axios.post('http://localhost:8080/block/addblock',{user_iduser:el,userIduser:el})
 .then(()=>{console.log("blocked")
-setRefresh(!refresh)
+
 })
 .catch((err)=>{console.log(err);})
+})
+}
+
+const del=()=>{
+  selected.map((el)=>{
+  axios.delete(`http://localhost:8080/block/delblock/${el}`)
+  .then(()=>{
+    console.log("unblocked")
+    setRefresh(!refresh)
+  })
+  .then((err)=>{
+console.log(err);
+  })
 })
 }
 
@@ -72,7 +83,7 @@ return (
           setRowSelectionModel(newRowSelectionModel);
         }}
       />
-<Button variant="contained" onClick={()=>{Addtoblock()}} >Block Selected Users</Button>
+<Button variant="contained" onClick={()=>{del()}} >Unblock Selected Users</Button>
     </div>
 
 
@@ -82,4 +93,4 @@ return (
 
 )
 }
-export default Dashboards
+export default Blocked
