@@ -13,4 +13,5 @@ const Categories = sequelize.define('categories', {
   timestamps: false
 })
 
+
 module.exports = {Categories}

@@ -9,13 +9,6 @@ import axios from 'axios';
 const Add = () => {
   const navigate = useNavigate();  // Get the navigate function from React Router
 
-  const Addpro=()=>{
-    axios.post('http://localhost:8080/product/addpro').then((result)=>{
-    console.log(result);
-    }).catch((err)=>{
-      console.log(err);
-    })
-  }
   const goToProfile = () => {
     navigate('/ProfileSeller')
   };

@@ -19,6 +19,13 @@ const ProifleSeller = () => {
       console.log(err);
     })
   },[])
+  const deleteProd=()=>{
+    axios.delete(``).then(()=>{
+      console.log('deleted');
+    }).catch((err)=>{
+      console.log(err);
+    })
+  }
   const navigate = useNavigate(); // Get the navigate function from React Router
   
   const goToEditProduct = () => {
@@ -70,63 +77,44 @@ const ProifleSeller = () => {
 
             </Stack>
         <Stack className='editprogileSeller' spacing={2} direction='column'>
+          
+          <Stack spacing={8} direction='row'>      
         <Typography variant='subtitle2' color='#f44336'> my List</Typography>
-        <AddCircleIcon onClick={goToAdd}/>
+        <AddCircleIcon button onClick={goToAdd}/>
+        </Stack>
+        
         {/* map data */}
 
     
-        <div className='salah'>
-        <div style={{height:"260px"}} className='listItemSeller'>
+        <div className='salah' style={{paddingTop:'20px'}}>
+        <div style={{height:"300px", width:"260px"}} className='listItemSeller'>
        
-        <Stack spacing={2} direction='column'> 
+        <Stack spacing={1} direction='column'> 
+        <div className="iconDelete">
         <DeleteOutlineIcon className='deletebuttonseller'/>
+       </div>
        <Stack spacing={1} direction='column'>
         </Stack>
        <img style={{marginTop:"-11px"}} className='imagecontentseller' src="https://www.scoopgaming.com.tn/9661-large_default/play-station-4-sony-manette-dual-shock-blanche.jpg" alt="no content" /> 
-       <Button variant='contained' color='error' onClick={goToEditProduct}>Edit</Button>
-       <div style={{marginTop:"0px"}}>
+       <Button variant='contained' color='error'  onClick={goToEditProduct}>Edit</Button>
+       <div style={{marginTop:"7px"}}>
+       <Stack spacing={2} direction='row'>
         <Typography  variant='subtitle2' > Accessoires PS4 Sony </Typography>
         <Typography  variant='subtitle2' > (15) </Typography>
-       
-       </div>
-       <Stack>
-        <div style={{marginTop:"-12px"}}  > <Rating />
-        </div>
-
-        
-       
-       </Stack>
-       
-    
-          </Stack>  
-          
-        </div>
-        {/* <div style={{height:"260px"}} className='listItemSeller'>
-       
-        <Stack spacing={2} direction='column'> 
-        <DeleteOutlineIcon className='deletebuttonseller'/>
-       <Stack spacing={1} direction='column'>
         </Stack>
-       <img style={{marginTop:"-11px"}} className='imagecontentseller' src="https://www.scoopgaming.com.tn/9661-large_default/play-station-4-sony-manette-dual-shock-blanche.jpg" alt="no content" /> 
-       <Button variant='contained' color='error'>Edit</Button>
-       <div style={{marginTop:"0px"}}>
-        <Typography  variant='subtitle2' > Accessoires PS4 Sony </Typography>
-        <Typography  variant='subtitle2' > (15) </Typography>
-       
-       </div>
+        </div>
+      <div >
+        <Typography variant='subtitle2' color='#f44336'>$ 550</Typography>
+        </div>
        <Stack>
         <div style={{marginTop:"-12px"}}  > <Rating />
         </div>
+        </Stack>
+        </Stack>  
+          </div>
+         </div>
 
-        
-       
-       </Stack>
-       
-    
-          </Stack>  
-          
-        </div> */}
-        </div>
+
         </Stack>
         </div>
        </Stack>

@@ -12,15 +12,19 @@
     align-items: center;
     height: 40vh;
     width: 35vh;
-    background-color:transparent;
+    background-color:#0000000d;
     transition: background-color 0.3s; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Adjust the values as needed */
+    cursor: pointer;
+
 }
 .salah{
     display:flex;
     gap:20px;
 }
 .listItemSeller:hover {
-    background-color: #f3eeee; 
+    /* transform: scale(1.01);  */
+    background-color: #ddd8d8c9; 
 }
 /* .carproductuselled{
     display: flex;
@@ -35,11 +39,15 @@
 } */
 .deletebuttonseller{
     padding-left: 180px;
+    transform: scale(1.11);
     
 }
 .imagecontentseller{
     margin-top: 1px;
-    padding-left: 25px;
-    width: 150px;
-    height: 100px;
+    padding-left: 16px;
+    width: 180px;
+    height: 130px;
+}
+.iconDelete :hover{
+    transform: scale(1.11); 
 }
