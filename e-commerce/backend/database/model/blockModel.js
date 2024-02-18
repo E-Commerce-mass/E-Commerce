@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize')
+const { DataTypes, where } = require('sequelize')
 const sequelize = require('../index')
 
 const Block = sequelize.define('block', {
@@ -11,4 +11,16 @@ const Block = sequelize.define('block', {
   timestamps: false
 })
 
-module.exports = {Block}
+const addToblock = (data) => {
+  return Block.create(data)
+}
+
+const getBlocked =()=>{
+  return Block.findAll()
+}
+
+const removefromblock=(id)=>{
+  return Block.destroy({where:{user_iduser:id}})
+}
+
+module.exports = {Block,addToblock,getBlocked,removefromblock}

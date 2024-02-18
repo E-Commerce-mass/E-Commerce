@@ -48,9 +48,9 @@ const AddProductSeller = () => {
 
   const Addpro = (dataa) => {
     console.log(dataa,'sssss');
-    const x = JSON.parse(localStorage.getItem("userInfo"))
-    const userId = x.userIduser
-    axios.post(`http://localhost:8080/product/addpro/${userId}`,dataa )
+    // const x = JSON.parse(localStorage.getItem("userInfo"))
+    // const userId = x.userIduser
+    axios.post(`http://localhost:8080/product/addpro/${1}`,dataa )
     .then((result) => {
       console.log(result);
       const id = result.data.idproducts
