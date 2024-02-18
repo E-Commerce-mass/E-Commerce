@@ -1,6 +1,7 @@
 
 const { DataTypes } = require('sequelize')
 const sequelize = require('../index')
+const { Block } = require('./blockModel')
 
 const User = sequelize.define('user', {
   iduser: {
@@ -36,7 +37,7 @@ const editUser = (id, data) => {
 }
 
 const getAll = () => {
-  return User.findAll()
+  return User.findAll({include:Block})
 }
 
 const findClients = () => {

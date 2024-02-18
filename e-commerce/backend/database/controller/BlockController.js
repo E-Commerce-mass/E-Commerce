@@ -1,4 +1,4 @@
-const {addToblock} = require('../model/blockModel.js')
+const {addToblock,getBlocked,removefromblock} = require('../model/blockModel.js')
 
 const addBlock = async (req,res) => {
     const x= await addToblock(req.body)
@@ -10,5 +10,24 @@ const addBlock = async (req,res) => {
     }
 }
 
+const getallblocked= async (req,res)=>{
+    const x= await getBlocked()
+    try{
+        res.send(x)
+    }
+    catch(err){
+   console.log(err);
+    }
+}
 
-module.exports={addBlock}
+const deleteFromblock= async (req,res)=>{
+    const x= await removefromblock(req.params.id)
+    try{
+        res.send("deleted")
+    }
+    catch(err){
+   console.log(err);
+    }
+}
+
+module.exports={addBlock,getallblocked,deleteFromblock}
