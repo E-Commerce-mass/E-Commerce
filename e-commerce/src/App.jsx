@@ -7,7 +7,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' Component={AdminDashboard}></Route>
-
       </Routes>
     </BrowserRouter>
   )
