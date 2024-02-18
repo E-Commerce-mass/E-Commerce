@@ -2,6 +2,7 @@ import  React,{useState,useEffect} from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import Charts from './charts';
 import axios from "axios"
+import Button from '@mui/material/Button';
 const columns = [
     { field: 'iduser', headerName: 'ID', width: 70 },
     { field: 'firstName', headerName: 'First name', width: 130 },
@@ -22,6 +23,8 @@ const columns = [
 
 const Dashboards =()=>{
 const[data,setData]=useState([])
+const[selected,setRowSelectionModel]=useState("")
+console.log(selected);
 console.log(data);
 useEffect(()=>{
 axios.get('http://localhost:8080/user/getallusers')
@@ -33,6 +36,15 @@ console.log(res.data);
     console.log(err);
 })
 },[])
+
+const Addtoblock=()=>{
+selected.forEach((el)=>{
+axios.post('http://localhost:8080/block/addblock',{user_iduser:el,userIduser:el})
+.then(()=>{console.log("blocked");})
+.catch((err)=>{console.log(err);})
+})
+}
+
 
 return (
 <>
@@ -48,7 +60,12 @@ return (
           },
         }}
         pageSizeOptions={[1]}
+        checkboxSelection
+        onRowSelectionModelChange={(newRowSelectionModel) => {
+          setRowSelectionModel(newRowSelectionModel);
+        }}
       />
+<Button variant="contained" onClick={()=>{Addtoblock()}} >Block Selected Users</Button>
     </div>
 
 

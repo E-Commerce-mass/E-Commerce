@@ -13,7 +13,4 @@ const Image = sequelize.define('images', {
     timestamps: false     
 })
 
-const getOneimage = (pr) => {
-    return Image.findAll({where: {productIdProducts: pr}})
-  }
-module.exports = {Image,getOneimage}
+module.exports = {Image}
