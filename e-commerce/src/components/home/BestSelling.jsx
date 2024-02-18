@@ -18,15 +18,28 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import { useNavigate } from "react-router-dom";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import axios from "axios";
 
 const BestSelling = () => {
   const productData = useContext(ProductContext);
   const sliderRef = useRef(0);
   const scrollAmount = 100;
   const navigate = useNavigate();
+
+  const hundleLike = (data) => {
+    axios
+      .post("http://localhost:8080/favorit/like", data)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <Container sx={{ marginTop: "100px" }}>
-      <Box sx={{display:'flex', justifyContent:'space-between'}}>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box>
           <div
             style={{
@@ -100,21 +113,8 @@ const BestSelling = () => {
                   }}
                 >
                   <div>
-                    <Typography
-                      sx={{
-                        height: "25px",
-                        width: "55px",
-                        textAlign: "center",
-                        fontFamily: "cursive",
-                        borderRadius: "4px",
-                        color: "wheat",
-                        backgroundColor: "rgba(219, 68, 68, 1)",
-                      }}
-                    >
-                      -{e.promotion}%
-                    </Typography>
                     <IconButton
-                      aria-label="bookmark Bahamas Islands"
+                      aria-label=""
                       variant="plain"
                       color="neutral"
                       size="md"
@@ -126,11 +126,12 @@ const BestSelling = () => {
                         borderRadius: "20px",
                         zIndex: 1,
                       }}
+                      onClick={() => hundleLike({ product: e, userIduser: 1 })}
                     >
                       <FavoriteBorderIcon />
                     </IconButton>
                     <IconButton
-                      aria-label="bookmark Bahamas Islands"
+                      aria-label=""
                       variant="plain"
                       color="neutral"
                       size="md"
@@ -158,6 +159,7 @@ const BestSelling = () => {
                     />
                   </AspectRatio>
                   <Button
+                    onClick={() => navigate("/oneview", { state: e })}
                     disabled={false}
                     fullWidth
                     variant="solid"
@@ -202,14 +204,17 @@ const BestSelling = () => {
                           flexDirection: "row",
                           gap: "10px",
                         }}
-                      >{console.log(e.reviews)}
+                      >
+                        {console.log(e.reviews)}
                         <Rating
                           name="half-rating"
                           defaultValue={e.reviews.length}
                           precision={0.5}
                           readOnly
                         />
-                        <span style={{ marginTop: "0px" }}>({e.reviews.length})</span>
+                        <span style={{ marginTop: "0px" }}>
+                          ({e.reviews.length})
+                        </span>
                       </Stack>
                     </div>
                   </CardContent>

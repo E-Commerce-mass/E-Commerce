@@ -88,7 +88,10 @@ const OneViewRelated = () => {
         }}
       >
         {productData.map((e) => {
-          if (location.state.categories[0].categoryname === e.categories[0].categoryname) {
+          if (
+            location.state.categories[0].categoryname ===
+            e.categories[0].categoryname
+          ) {
             return (
               <Box
                 display={"inline-flex"}
@@ -177,6 +180,7 @@ const OneViewRelated = () => {
                     />
                   </AspectRatio>
                   <Button
+                    onClick={() => navigate("/oneview", { state: e })}
                     disabled={false}
                     fullWidth
                     variant="solid"

@@ -18,6 +18,7 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import { useNavigate } from "react-router-dom";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import axios from "axios";
 
 const TodayS = () => {
   const productData = useContext(ProductContext);
@@ -25,6 +26,16 @@ const TodayS = () => {
   const scrollAmount = 100;
   const navigate = useNavigate();
   const time = Date();
+
+  const hundleLike = (data) => {
+    axios.post("http://localhost:8080/favorit/like", data)
+    .then((result)=>{
+      console.log(result);
+    })
+    .catch((err)=>{
+      console.error(err)
+    })
+  }
 
   return (
     <Container sx={{ marginTop: "100px" }}>
@@ -135,6 +146,7 @@ const TodayS = () => {
                         borderRadius: "20px",
                         zIndex: 1,
                       }}
+                      onClick={()=>hundleLike({product:e,userIduser:1})}
                     >
                       <FavoriteBorderIcon />
                     </IconButton>

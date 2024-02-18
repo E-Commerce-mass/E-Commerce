@@ -16,10 +16,21 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import axios from "axios";
 
 const Allproducts = () => {
   const navigate = useNavigate();
   const productData = useContext(ProductContext);
+
+  const hundleLike = (data) => {
+    axios.post("http://localhost:8080/favorit/like", data)
+    .then((result)=>{
+      console.log(result);
+    })
+    .catch((err)=>{
+      console.error(err)
+    })
+  }
 
   return (
     <Box sx={{paddingLeft:"120px", paddingRight:'120px', paddingTop:"50px", width:'100%'}}>
@@ -79,6 +90,7 @@ const Allproducts = () => {
                     borderRadius: "20px",
                     zIndex: 1,
                   }}
+                  onClick={()=>hundleLike({product:e,userIduser:1})}
                 >
                   <FavoriteBorderIcon />
                 </IconButton>

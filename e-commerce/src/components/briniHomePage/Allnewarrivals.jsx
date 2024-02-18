@@ -69,6 +69,7 @@ const Allnewarrivals = () => {
                       borderRadius: "20px",
                       zIndex: 1,
                     }}
+                    onClick={()=>hundleLike({product:e,userIduser:1})}
                   >
                     <FavoriteBorderIcon />
                   </IconButton>

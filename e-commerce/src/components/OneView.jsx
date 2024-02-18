@@ -103,13 +103,7 @@ const OneView = () => {
             }}
           >
             {" "}
-            <img
-              width={"500px"}
-              height={"600px"}
-              defaultValue={location.state.images[0].image}
-              src={image}
-              alt=""
-            />
+            <img width={"500px"} height={"600px"} src={image} alt="" />
           </Box>
           <Box
             sx={{
