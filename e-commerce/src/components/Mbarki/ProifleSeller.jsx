@@ -12,8 +12,10 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const ProifleSeller = () => {
   const [dataSeller,setDataSeller]=useState([])
-  useEffect((id)=>{
-    axios.get(`http://localhost:8080/product/getall/${id}`).then((res)=>{
+  useEffect(()=>{
+    // const x = JSON.parse(localStorage.getItem("userInfo"))
+    // const id=x.userIduser
+    axios.get(`http://localhost:8080/product/getall/${33}`).then((res)=>{
       setDataSeller(res.dataSeller)
     }).catch((err)=>{
       console.log(err);
@@ -34,12 +36,27 @@ const ProifleSeller = () => {
   const goToAdd=()=>{
     navigate('/addProductSeller')
   }
+  const goHomee=()=>{
+    navigate('/')
+  }
   
 
 
   return (
     <div>
        <div>
+     <div style={{paddingLeft:'250px'}}>
+      <Stack spacing={120} direction='row'>
+        <Stack spacing={1} direction='row'>
+          <Typography variant='subtitle2' onClick={goHomee} >home /</Typography>
+          <Typography variant='subtitle2'>Cart</Typography>
+        </Stack>
+        <Stack spacing={1} direction='row'>
+          <Typography variant='subtitle2' > Welcome!</Typography>
+          <Typography  variant='subtitle2' color='#f44336'> User</Typography>
+        </Stack>
+      </Stack>
+        </div>
         <Stack spacing={30} direction='row'>
        <div className='selernav'>
         <Stack className='sellermanagin' spacing={1} direction='column'  >
@@ -85,26 +102,28 @@ const ProifleSeller = () => {
         
         {/* map data */}
 
-    
+    {dataSeller.map((product)=>{
+      return(
         <div className='salah' style={{paddingTop:'20px'}}>
         <div style={{height:"300px", width:"260px"}} className='listItemSeller'>
        
         <Stack spacing={1} direction='column'> 
         <div className="iconDelete">
-        <DeleteOutlineIcon className='deletebuttonseller'/>
+        <DeleteOutlineIcon className='deletebuttonseller' onClick={deleteProd(product.idproducts)}/>
        </div>
        <Stack spacing={1} direction='column'>
         </Stack>
-       <img style={{marginTop:"-11px"}} className='imagecontentseller' src="https://www.scoopgaming.com.tn/9661-large_default/play-station-4-sony-manette-dual-shock-blanche.jpg" alt="no content" /> 
+       <img style={{marginTop:"-11px"}} src={product.images[0].image} alt="no content" /> 
+     
        <Button variant='contained' color='error'  onClick={goToEditProduct}>Edit</Button>
        <div style={{marginTop:"7px"}}>
        <Stack spacing={2} direction='row'>
-        <Typography  variant='subtitle2' > Accessoires PS4 Sony </Typography>
-        <Typography  variant='subtitle2' > (15) </Typography>
+        <Typography  variant='subtitle2' > {product.productName} </Typography>
+        <Typography  variant='subtitle2' > ({product.quantity}) </Typography>
         </Stack>
         </div>
       <div >
-        <Typography variant='subtitle2' color='#f44336'>$ 550</Typography>
+        <Typography variant='subtitle2' color='#f44336'>$ {product.price}</Typography>
         </div>
        <Stack>
         <div style={{marginTop:"-12px"}}  > <Rating />
@@ -113,8 +132,11 @@ const ProifleSeller = () => {
         </Stack>  
           </div>
          </div>
+      ) 
+    })}
+       
 
-
+    
         </Stack>
         </div>
        </Stack>
