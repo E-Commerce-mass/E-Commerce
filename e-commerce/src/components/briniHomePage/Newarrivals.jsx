@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import Card from '@mui/material/Card';
 import { useNavigate } from "react-router-dom";
 import CardActions from '@mui/material/CardActions';
@@ -7,14 +7,14 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box, ThemeProvider } from '@mui/system';
-
+import productData from "../UseContext.js"
 const Newarrivals=(props)=>{
   const navigate = useNavigate();
-
+  const data=useContext(productData)
 const arr = []
     const filterr =(()=>{
         
-props.prodd.map((e)=>{
+data.map((e)=>{
     
     const parsed = JSON.parse(e.new)
     

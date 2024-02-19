@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useContext} from "react";
 import Card from '@mui/material/Card';
 import { useNavigate } from "react-router-dom";
 import CardActions from '@mui/material/CardActions';
@@ -7,15 +7,15 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box, ThemeProvider } from '@mui/system';
-
+import productData from "../UseContext.js"
 const AllflashSale=(props)=>{
     const navigate = useNavigate()
- 
+    const data=useContext(productData)
    return (
     
     <div>
      <h1 style={{display:"grid",textAlign:"center",color:"rgb(247, 93, 93)",backgroundColor:"white",marginBlock:"20px"}}>--- Explore All Products ---</h1>
-     {props.prodd.map((e)=>{
+     {data.map((e)=>{
   
   return (
 

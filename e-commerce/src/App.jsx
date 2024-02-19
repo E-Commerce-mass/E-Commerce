@@ -18,7 +18,8 @@ import FlashSale from "./components/briniHomePage/FlashSale.jsx"
 import SignIn from "./components/SignIn.jsx"
 import SignUp from "./components/SignUp.jsx"
 import ProductContext from './components/UseContext.js';
-
+import Notfound from "./components/briniHomePage/Notfound.jsx"
+import Searchbar from "./components/briniHomePage/Searchbar.jsx"
 function App() {
   const [dataproduct, setDataproduct] = useState([])
 
@@ -41,7 +42,8 @@ function App() {
       <Routes>
       <Route path='/home' element={<HomePage prod={dataproduct} />} ></Route>
         <Route path="/womanfashion" element={<Womanfashion prodd={dataproduct}/>} ></Route>
-        <Route path="/manfashion" element={<Manfashion prodd={dataproduct}/>} ></Route>
+        <Route path="/search" element={<Searchbar/>}></Route>
+        <Route path="/menfashion" element={<Manfashion prodd={dataproduct}/>} ></Route>
         <Route path="/health&beauty" element={<Healthbeauty prodd={dataproduct}/>} ></Route>
         <Route path="/gaming" element={<Gaming prodd={dataproduct}/>} ></Route>
         <Route path="/sports" element={<Sports prodd={dataproduct}/>} ></Route>
@@ -55,6 +57,7 @@ function App() {
         <Route path='/signup' Component={SignUp}></Route>  
         <Route path='/signin' Component={SignIn}></Route>
         <Route path="/flashsale" Component={FlashSale}></Route>
+        <Route path="/notfound" Component={Notfound}  ></Route>
       </Routes>
     </ProductContext.Provider>
     </BrowserRouter>

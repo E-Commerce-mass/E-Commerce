@@ -20,29 +20,30 @@ const Contact=()=>{
             <div style={{marginLeft:"-1000px",borderRadius:"90px"}}>
   <Container maxWidth="xs">
         <Box sx={{ bgcolor: '#f5f1f1', height: '60vh' ,borderRadius:"20px"}} > 
-
+        <div style={{paddingTop:"1px"}}>
         <CallIcon sx={{marginBlock:"140px" ,marginLeft:"30px",color:"red"}}/>
-        <Typography sx={{marginTop:"-161px",marginLeft:"90px",textSizeAdjust:"auto"}}>Call Us To </Typography>
-        <Typography sx={{marginTop:"20px",marginLeft:"40px",textSizeAdjust:"auto"}}>You can visit us in RBK Welcome to coding world </Typography>
-        <Typography sx={{marginTop:"20px",marginLeft:"30px",textSizeAdjust:"auto"}}>*  Phone :    216 90 233 244</Typography>
+        <Typography sx={{marginTop:"-161px",marginLeft:"90px",textSizeAdjust:"auto",fontFamily:"system-ui"}}>Call Us To </Typography>
+        <Typography sx={{marginTop:"20px",marginLeft:"26px",textSizeAdjust:"auto",fontFamily:"system-ui"}}>You can visit us in RBK Welcome to coding world </Typography>
+        <Typography sx={{marginTop:"20px",marginLeft:"30px",textSizeAdjust:"auto",fontFamily:"system-ui"}}>*  Phone :    216 90 233 244</Typography>
         < EmailIcon sx={{marginLeft:"30px",marginTop:"30px",color:"red",borderRadius:"20cap"}}/>
-        <Typography sx={{marginTop:"20px",marginLeft:"30px",textSizeAdjust:"auto"}}>You can also Contact us on our E-mail : </Typography>
-        <Typography sx={{marginTop:"20px",marginLeft:"30px",textSizeAdjust:"auto"}}>rbkmain@rbksenior.com </Typography>
+        <Typography sx={{marginTop:"20px",marginLeft:"30px",textSizeAdjust:"auto",fontFamily:"system-ui"}}>You can also Contact us on our E-mail : </Typography>
+        <Typography sx={{marginTop:"20px",marginLeft:"30px",textSizeAdjust:"auto",fontFamily:"system-ui"}}>rbkmain@rbksenior.com </Typography>
+        </div>
         </Box>
       </Container>
       
       </div>
-      <div style={{marginRight:"-300px",marginTop:"-446px"}}>
-      <Container maxWidth="md">
+      <div style={{marginRight:"-300px",marginTop:"-446px",paddingLeft:"100px"}}>
+      <Container maxWidth="md" sx={{paddingLeft:"100px"}}>
         <Box sx={{ bgcolor: '#f5f1f1', height: '60vh' ,borderRadius:"20px"}} > 
 
-        <TextField TextField="Name" sx={{marginTop:"100px",marginLeft:"40px"}} placeholder="First Name"/>
+        <TextField TextField="Name" sx={{marginTop:"100px",marginLeft:"100px"}} placeholder="First Name"/>
         <TextField TextField="Name" sx={{marginTop:"100px",marginLeft:"40px"}} placeholder="Last Name"/>
         <TextField TextField="Name" sx={{marginTop:"100px",marginLeft:"40px"}} placeholder="Problem "/>
-        <Typography sx={{marginTop:"35px",marginLeft:"150px",textSizeAdjust:"auto"}}>Please talk to us about your problem and identify youself in the inputs below </Typography>
+        <Typography sx={{marginTop:"35px",marginLeft:"150px",textSizeAdjust:"auto",fontFamily:"system-ui"}}>Please talk to us about your problem and identify youself in the inputs below </Typography>
 
-       <div style={{marginLeft:"300px",marginTop:"40px"}}>
-        <Button endIcon={<SendIcon />} variant="contained" sx={{backgroundColor:"red"}}>Send Report </Button>
+       <div style={{marginLeft:"370px",marginTop:"30px"}}>
+        <Button endIcon={<SendIcon />} variant="contained" sx={{backgroundColor:"red"}}onClick={()=>{alert("Message send thanks for your report")}}>Send Report </Button>
         </div>
         </Box>
       </Container>

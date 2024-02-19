@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import {useContext,useState} from 'react'
+import { useNavigate } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,13 +10,31 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import SearchIcon from '@mui/icons-material/Search';
-import { Search } from '@mui/icons-material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import PersonIcon from '@mui/icons-material/Person';
+import TextField from '@mui/material/TextField';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import productData from './UseContext'
 
 const Header = () => {
+    // const navigate = useNavigate()
+    const data= useContext(productData)
+    const [name,setName]=useState('')
+    const [searchy,setSearchy]=useState([])
+    
+    const setsearch=()=>{
+       var filtered= data.filter((e)=>{
+       
+        return e.productName === name
+    })
+    console.log(filtered)
+    if (!filtered.length){
+        navigate("/notfound")
+    }
+      else  setSearchy(filtered)
+    }
+   
   return (
     <AppBar position='static' sx={{bgcolor: 'transparent', boxShadow:'none', paddingTop:'20px'}}>
         <Container maxWidth='xl'>
@@ -25,7 +43,7 @@ const Header = () => {
                     variant="h6"
                     noWrap
                     component='a'
-                    href="/"
+                    href="/home"
                     sx={{
                       ml: 15,
                       display: { xs: 'none', md: 'flex' },
@@ -43,7 +61,7 @@ const Header = () => {
                         variant="h6"
                         noWrap
                         component='a'
-                        href="/"
+                        href="/home"
                         sx={{
                         
                         display: { xs: 'none', md: 'flex'},
@@ -61,7 +79,7 @@ const Header = () => {
                         variant="h6"
                         noWrap
                         component='a'
-                        href="/"
+                        href="/contact"
                         sx={{
                         ml: '50px',
                         display: { xs: 'none', md: 'flex' },
@@ -79,7 +97,7 @@ const Header = () => {
                         variant="h6"
                         noWrap
                         component='a'
-                        href="/"
+                        href="/aboutus"
                         sx={{
                         ml: '50px',
                         display: { xs: 'none', md: 'flex' },
@@ -112,11 +130,23 @@ const Header = () => {
                     >Sign Up
                     </Typography>
                 </Box>
-                <Search>
-                    
-                </Search>
             </Toolbar>
-
+            <div>
+        <div style={{border:"10px",marginTop:"-60px",marginLeft:"1000px",alignContent:"center"}}>
+        <Button sx={{marginTop:"15px"}} onClick={()=>{setsearch()}}><SearchIcon></SearchIcon></Button>
+        <TextField id="standard-basic" label="Search" variant="standard" sx={{color:"black"}}onChange={(e)=>{setName(e.target.value)}}/>
+       <div style={{marginTop:"-37px",marginLeft:"260px"}}>
+        <Button onClick={()=>{navigate("/favorite")}}><FavoriteBorderIcon sx={{color:'black'}}></FavoriteBorderIcon></Button>
+        </div>
+        <div style={{marginLeft:"320px",marginTop:"-37px"}}>
+       <Button onClick={()=>{navigate("/shop")}}><ShoppingCartIcon sx={{color:'black'}}></ShoppingCartIcon></Button>
+        </div>
+        <div style={{marginTop:"-37px",marginLeft:'380px'}}>
+        <Button onClick={()=>{navigate("/signin")}}><PersonIcon sx={{color:'black'}}></PersonIcon ></Button>   
+     
+        </div>
+  </div>
+    </div>
         </Container>
     </AppBar>
   )
