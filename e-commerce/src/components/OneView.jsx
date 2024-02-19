@@ -22,6 +22,7 @@ import SvgIcon from "@mui/material/SvgIcon";
 import Icon from "@mui/material/Icon";
 import axios from "axios";
 import OneViewRelated from "./OneViewRelated";
+import Foutree from "./Mbarki/Foutree";
 
 const OneView = () => {
   const location = useLocation();
@@ -35,6 +36,7 @@ const OneView = () => {
   };
 
   return (
+    <div>
     <div
       style={{
         paddingLeft: "120px",
@@ -411,6 +413,8 @@ const OneView = () => {
         </Box>
         <OneViewRelated />
       </Container>
+    </div>
+    <Foutree/>
     </div>
   );
 };

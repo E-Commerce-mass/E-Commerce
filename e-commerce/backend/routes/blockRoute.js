@@ -2,7 +2,7 @@ const router = require('express').Router()
 const controller = require('../database/controller/BlockController')
 
 
-
+router.get('/check/:id', controller.checkBlock)
 
 router.post('/addblock',controller.addBlock)
 

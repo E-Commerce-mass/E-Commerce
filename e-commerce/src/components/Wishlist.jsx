@@ -8,8 +8,8 @@ import Typography from "@mui/joy/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Favorite from "@mui/icons-material/Favorite";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ProductContext from "../UseContext";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import ProductContext from "./UseContext";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -18,23 +18,36 @@ import { useNavigate } from "react-router-dom";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import axios from "axios";
 
-const Allproducts = () => {
-  const navigate = useNavigate();
-  const productData = useContext(ProductContext);
+const Wishlist = () => {
+    const navigate = useNavigate();
+    const [data, setData] = useState([])
+    const [refresh, setrefresh] =useState(true)
 
-  const hundleLike = (data) => {
-    axios.post("http://localhost:8080/favorit/like", data)
-    .then((result)=>{
-      console.log(result);
-    })
-    .catch((err)=>{
-      console.error(err)
-    })
-  }
+    useEffect(()=>{
+        const id = localStorage.getItem("id")
+        axios(`http://localhost:8080/favorit/getall/${id}`)
+        .then((result)=>{
+            setData(result.data)
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    }, [refresh])
+
+    const hundledislike = (id) => {
+        axios.delete(`http://localhost:8080/favorit/dislike/${id}`)
+        .then((result)=>{
+            navigate('/wishlist')
+            setrefresh(!refresh)
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    }
 
   return (
     <Box sx={{paddingLeft:"200px", paddingRight:'120px',gap:"10px", paddingTop:"100px", width:'100%'}}>
-      {productData.map((e) => {
+      {data.map((e) => {
         return (
           <Box
             display={"inline-flex"}
@@ -48,68 +61,24 @@ const Allproducts = () => {
               }}
             >
               <div>
-                {e.new ? (
-                  <Typography
-                    sx={{
-                      height: "25px",
-                      width: "55px",
-                      textAlign: "center",
-                      fontFamily: "cursive",
-                      borderRadius: "4px",
-                      color: "white",
-                      backgroundColor: "rgba(0, 255, 102, 1)",
-                    }}
-                  >
-                    new
-                  </Typography>
-                ) : (
-                  <Typography
-                    sx={{
-                      height: "25px",
-                      width: "55px",
-                      textAlign: "center",
-                      fontFamily: "cursive",
-                      borderRadius: "4px",
-                      color: "transparent",
-                      backgroundColor: "transparent",
-                    }}
-                  >
-                    new
-                  </Typography>
-                )}
-                <IconButton
-                  aria-label="bookmark Bahamas Islands"
-                  variant="plain"
-                  color="neutral"
-                  size="md"
-                  sx={{
-                    position: "absolute",
-                    top: "0.3rem",
-                    right: "0.5rem",
-                    backgroundColor: "white",
-                    borderRadius: "20px",
-                    zIndex: 1,
-                  }}
-                  onClick={()=>hundleLike({product:e,userIduser:1})}
-                >
-                  <FavoriteBorderIcon />
-                </IconButton>
-                <IconButton
-                  aria-label="bookmark Bahamas Islands"
-                  variant="plain"
-                  color="neutral"
-                  size="md"
-                  sx={{
-                    position: "absolute",
-                    top: "2.8rem",
-                    right: "0.5rem",
-                    backgroundColor: "white",
-                    borderRadius: "20px",
-                    zIndex: "1",
-                  }}
-                >
-                  <VisibilityIcon />
-                </IconButton>
+              <IconButton
+                      aria-label="bookmark Bahamas Islands"
+                      variant="plain"
+                      color="neutral"
+                      size="md"
+                      sx={{
+                        position: "absolute",
+                        top: "0.3rem",
+                        right: "0.5rem",
+                        backgroundColor: "white",
+                        borderRadius: "20px",
+                        zIndex: 1,
+                      }}
+                      onClick={()=>hundledislike(e.idfavorit)}
+                    >
+                      <DeleteForeverIcon />
+                    </IconButton>
+               
               </div>
               <AspectRatio
                 sx={{ maxWidth: "90%", marginLeft: "50px" }}
@@ -118,7 +87,7 @@ const Allproducts = () => {
               >
                 <img
                   style={{ width: "120px", height: "120px" }}
-                  src={e.images[0].image}
+                  src={e.product.images[0].image}
                   alt="product"
                 />
               </AspectRatio>
@@ -135,21 +104,21 @@ const Allproducts = () => {
                   backgroundColor: "black",
                   borderRadius: "none",
                 }}
-                onClick={()=>navigate('/oneview', {state: e})}
+                onClick={()=>navigate('/oneview', {state: e.product})}
               >
                 <AddShoppingCartIcon sx={{ marginRight: "15px" }} />
                 Add to Cart
               </Button>
 
               <CardContent orientation="vertical" sx={{ gap: "5px" }}>
-                <Typography level="title-lg">{e.productName}</Typography>
+                <Typography level="title-lg">{e.product.productName}</Typography>
                 <CardContent orientation="horizontal">
                   <Typography
                     fontSize="s"
                     fontWeight="lg"
                     sx={{ color: "red" }}
                   >
-                    ${e.price}
+                    ${e.product.price}
                   </Typography>
                   <Stack
                     spacing={1}
@@ -161,12 +130,12 @@ const Allproducts = () => {
                   >
                     <Rating
                       name="half-rating"
-                      defaultValue={e.reviews.length}
+                      defaultValue={e.product.reviews.length}
                       precision={0.5}
                       readOnly
                     />
                     <span style={{ marginTop: "0px" }}>
-                      ({e.reviews.length})
+                      ({e.product.reviews.length})
                     </span>
                   </Stack>
                 </CardContent>
@@ -177,6 +146,6 @@ const Allproducts = () => {
       })}
     </Box>
   );
-};
+}
 
-export default Allproducts;
+export default Wishlist

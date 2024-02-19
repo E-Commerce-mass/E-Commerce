@@ -26,14 +26,13 @@ import SignIn from "./components/SignIn.jsx"
 import SignUp from "./components/SignUp.jsx"
 import ProductContext from './components/UseContext.js';
 import OneView from "./components/OneView.jsx"
+import Wishlist from "./components/Wishlist.jsx";
 
 function App() {
-  
   
   const [dataproduct, setDataproduct] = useState([])
   const [one, setOne] = useState({})
   
-
   useEffect(() => {
     axios.get("http://localhost:8080/product/getall")
     .then((res) => {
@@ -45,18 +44,12 @@ function App() {
     })
   }, [])
 
-  // const getOne = (data) => {
-  //   // const navigate = useNavigate()
-  //   setOne(data)
-  //   console.log(data);
-  // }
-
   return (
     
     <>
-    <Header/>
     <BrowserRouter>
     <ProductContext.Provider value={dataproduct}>
+    <Header/>
       <Routes>
         <Route path='/' Component={HomePage}></Route>
         <Route path ="/ProfileSeller" Component={ProfileSeller}/>  
@@ -65,7 +58,6 @@ function App() {
         <Route path ="/editProductSeller" Component={Edit}/>  
         <Route path ="/foutre" Component={Foutree}/>  
         <Route path ="/Images" Component={Images}/>  
-
         <Route path='/admin' Component={AdminDashboard}></Route>
         <Route path="/womanfashion" element={<Womanfashion prodd={dataproduct}/>} ></Route>
         <Route path="/manfashion" element={<Manfashion prodd={dataproduct}/>} ></Route>
@@ -81,7 +73,8 @@ function App() {
         <Route path='/signup' Component={SignUp}></Route>  
         <Route path='/signin' Component={SignIn}></Route>
         <Route path="/flashsale" Component={AllflashSale}></Route>
-        <Route path='/oneview' element={<OneView />}></Route>
+        <Route path='/oneview' Component={OneView}></Route>
+        <Route path='/wishlist' Component={	Wishlist}></Route>
       </Routes>
     </ProductContext.Provider>
     </BrowserRouter>

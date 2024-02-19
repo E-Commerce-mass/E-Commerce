@@ -148,6 +148,7 @@ const OneViewRelated = () => {
                         borderRadius: "20px",
                         zIndex: 1,
                       }}
+                      onClick={()=>hundleLike({product:e, userIduser: localStorage.getItem("id")})}
                     >
                       <FavoriteBorderIcon />
                     </IconButton>

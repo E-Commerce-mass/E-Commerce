@@ -47,14 +47,11 @@ const AddProductSeller = () => {
   }, [ref])
 
   const Addpro = (dataa) => {
-    console.log(dataa,'sssss');
-    // const x = JSON.parse(localStorage.getItem("userInfo"))
-    // const userId = x.userIduser
-    axios.post(`http://localhost:8080/product/addpro/${1}`,dataa )
+    const id = localStorage.getItem("id")
+    axios.post(`http://localhost:8080/product/addpro/${id}`,dataa )
     .then((result) => {
       console.log(result);
       const id = result.data.idproducts
-      console.log(id,'bekrqrfjbvsdfkjbvkj');
       axios.post(`http://localhost:8080/image/add/${id}`, {image: images})
         .then(() => {
           console.log('done');
@@ -121,7 +118,8 @@ const AddProductSeller = () => {
                 size:size,
                 quantity:quantity,
                 promotion:promotion,
-                description:description
+                description:description,
+                categoryname: categoryy
               }
             )}>
               Submit

@@ -13,14 +13,15 @@ import './Foutree.css'
 
 const Foutree = () => {
   const styles = {
-    position: 'fixed',
+    marginTop:"40px",
+    paddingTop:'1px',
     bottom: 0,
     width: '100%',
     height: '400px', 
     textAlign: 'center',
     backgroundColor: '#000', 
     color: '#fff',
-    padding: '20px', 
+    
     left:'0'
   };
  

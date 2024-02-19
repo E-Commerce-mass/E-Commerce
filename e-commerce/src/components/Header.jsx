@@ -1,17 +1,15 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import SearchIcon from "@mui/icons-material/Search";
 import { Search } from "@mui/icons-material";
@@ -20,11 +18,17 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import productData from "./UseContext";
 import PersonIcon from "@mui/icons-material/Person";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Fade from "@mui/material/Fade";
+import axios from "axios";
 
 const Header = () => {
+  const navigate = useNavigate();
   const data = useContext(productData);
   const [name, setName] = useState("");
   const [searchy, setSearchy] = useState([]);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const setsearch = () => {
     var filtered = data.filter((e) => {
@@ -34,6 +38,25 @@ const Header = () => {
     if (!filtered.length) {
       navigate("/notfound");
     } else setSearchy(filtered);
+  };
+
+  const handleLogout = () => {
+    // axios.delete(`http://localhost:8080/token/delete/${localStorage.getItem("id")}`)
+    //   .then(() => {
+        navigate("/signin");
+        localStorage.clear();
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+  };
+
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -139,9 +162,8 @@ const Header = () => {
               Sign Up
             </Typography>
           </Box>
-          
         </Toolbar>
-        <div style={{width:'100%'}}>
+        <div style={{ width: "100%" }}>
           <div
             style={{
               border: "10px",
@@ -170,7 +192,7 @@ const Header = () => {
             <div style={{ marginTop: "-37px", marginLeft: "260px" }}>
               <Button
                 onClick={() => {
-                  navigate("/favorite");
+                  navigate("/wishlist");
                 }}
               >
                 <FavoriteBorderIcon
@@ -189,12 +211,24 @@ const Header = () => {
             </div>
             <div style={{ marginTop: "-37px", marginLeft: "380px" }}>
               <Button
-                onClick={() => {
-                  navigate("/signin");
-                }}
+                id="fade-button"
+                aria-controls={open ? "fade-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                onClick={handleClick}
               >
                 <PersonIcon sx={{ color: "black" }}></PersonIcon>
               </Button>
+              <Menu
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                TransitionComponent={Fade}
+              >
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={() => handleLogout()}>Logout</MenuItem>
+              </Menu>
             </div>
           </div>
         </div>

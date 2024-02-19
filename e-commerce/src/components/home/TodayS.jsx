@@ -146,7 +146,7 @@ const TodayS = () => {
                         borderRadius: "20px",
                         zIndex: 1,
                       }}
-                      onClick={()=>hundleLike({product:e,userIduser:1})}
+                      onClick={()=>hundleLike({product:e, userIduser:localStorage.getItem("id")})}
                     >
                       <FavoriteBorderIcon />
                     </IconButton>
@@ -179,7 +179,6 @@ const TodayS = () => {
                     />
                   </AspectRatio>
                   <Button
-                  id="addcart"
                   onClick={()=>navigate('/oneview', {state: e})}
                     disabled={false}
                     fullWidth
