@@ -17,4 +17,12 @@ const addFav = (data) => {
   return Favorit.create(data)
 }
 
-module.exports = {Favorit, addFav}
+const getAll = (id) => {
+  return Favorit.findAll({where:{userIduser: id}})
+}
+
+const deletOne = (id) => {
+  return Favorit.destroy({where:{idfavorit: id}})
+}
+
+module.exports = {Favorit, addFav, getAll, deletOne}

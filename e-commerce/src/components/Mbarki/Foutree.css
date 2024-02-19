@@ -6,7 +6,3 @@
 .iconWrapper:hover {
     transform: scale(1.2); 
   }
-
-  .imageWrapper:hover {
-    transform: scale(1.1);
-  }
